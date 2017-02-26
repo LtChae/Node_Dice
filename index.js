@@ -57,7 +57,6 @@ function setupServer(serverID) {
             });
             emoji = serverEmojis[emoji];
             if (emoji) {
-                console.log(emoji);
                 side.code = "<:"+emoji.name+":"+emoji.id+">";
             }
         });
@@ -68,7 +67,6 @@ function setupServer(serverID) {
         });
         emoji = serverEmojis[emoji];
         if (emoji) {
-            console.log(emoji);
             symbols[symbol].code = "<:"+emoji.name+":"+emoji.id+">";
         }
     });
@@ -109,11 +107,7 @@ bot.on("message", function(user, userID, channelID, message, event) {
 
     if(!(serverID in serverSetup)) {
         setupServer(serverID);
-        console.log(serverDice[serverID]);
-        console.log(serverSymbols[serverID]);
     }
-    // console.log(serverSymbols);
-    // console.log(serverDice);
 
     if (message === "ping") {
         sendMessages(channelID, [String.raw`\\:AbilBla:`]); //Sending a message with our helper function
@@ -126,7 +120,6 @@ bot.on("message", function(user, userID, channelID, message, event) {
         var die = "f";
         var roll = Math.floor(Math.random() * serverDice[serverID][die].length);
         var result = serverDice[serverID][die][roll].result;
-        console.log(result);
         pool = pool.concat(result);
         var returnMessage =  "```Adding (" + result.join(", ") + ") to destiny pool```";
         var poolMessage = "```Current destiny pool: " + pool.join(", ") + "```";
@@ -170,13 +163,11 @@ bot.on("message", function(user, userID, channelID, message, event) {
     if (message.match(diceMatch)) {
         console.log("Saw Dice Message");
         var diceToRoll = message.split('');
-        console.log(diceToRoll);
         diceToRoll.splice(0,5);
         diceToRoll.splice(diceToRoll.length-1,1);
 
         var results = [];
         diceToRoll.forEach(function(die) {
-            console.log(die);
             if (serverDice[serverID][die]) {
                 var roll = Math.floor(Math.random() * serverDice[serverID][die].length);
                 results = results.concat(serverDice[serverID][die][roll]);
