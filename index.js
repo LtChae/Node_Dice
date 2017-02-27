@@ -118,6 +118,12 @@ bot.on("message", function(user, userID, channelID, message, event) {
     if (message === "ping") {
         sendMessages(channelID, [String.raw`\\:AbilBla:`]); //Sending a message with our helper function
     }
+    
+    if (message === "!ClearAll") {
+        serverDice = {};
+        serverSymbols = {};
+        serverSetup = {};
+    }
 
     if (message.match(poolMatch)) {
         if (!pool){
