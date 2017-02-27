@@ -2,7 +2,9 @@
   "name": "NodeSW_Dice",
   "version": "1.0.0",
   "dependencies": {
-    "discord.io": "^1.0.0"
+    "discord.io": "^1.0.0",
+    "serve-static": "^1.0.0",
+    "finalhandler": "^1.0.0"
   },
   "description": "",
   "main": "index.js",

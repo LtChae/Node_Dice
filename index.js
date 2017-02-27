@@ -1,8 +1,14 @@
 /*Variable area*/
 
-var http = require('http'); 
+var http = require('http');
+var finalhandler = require('finalhandler');
+var serveStatic = require('serve-static');
+
+var serve = serveStatic('public', {'index': ['index.html', 'index.htm']})
+
 http.createServer(function (req, res) { 
-    res.writeHead(200, {'Content-Type': 'text/plain'}); 
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    serve(req, res, finalhandler(req, res));
     res.end('Hello! Was I asleep? Sorry, Heroku is very particular about sleeping apps.\n'); 
 }).listen(process.env.PORT || 5000);
 
