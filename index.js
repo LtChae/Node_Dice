@@ -83,7 +83,7 @@ function setupServer(serverID) {
 
 }
 
-var diceMatch = /!Roll\[[adpcfbs]*\]/;
+var diceMatch = /!Roll\[([adpcfbs]*)\]/;
 var destinyMatch = /!Flip ((Dark)|(Light))/;
 var poolMatch = /!Roll Destiny/;
 var clearMatch = /!Reset Destiny/;
@@ -104,6 +104,10 @@ bot.on("ready", function(event) {
 });
 
 bot.on("message", function(user, userID, channelID, message, event) {
+    if (process.env.PORT === "true"){
+        console.log("Ignoring message, in maintenance mode.");
+        return;
+    }
     console.log(user + " - " + userID);
     console.log("in " + channelID);
     console.log(message);
@@ -179,6 +183,9 @@ bot.on("message", function(user, userID, channelID, message, event) {
         var diceToRoll = message.split('');
         diceToRoll.splice(0,5);
         diceToRoll.splice(diceToRoll.length-1,1);
+        
+        var match = diceMatch.exec(message);
+        console.log(match);
 
         var results = [];
         diceToRoll.forEach(function(die) {
