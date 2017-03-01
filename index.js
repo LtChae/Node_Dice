@@ -181,12 +181,9 @@ bot.on("message", function(user, userID, channelID, message, event) {
 
     if (message.match(diceMatch)) {
         console.log("Saw Dice Message");
-        var diceToRoll = message.split('');
-        diceToRoll.splice(0,5);
-        diceToRoll.splice(diceToRoll.length-1,1);
         
         var match = diceMatch.exec(message);
-        console.log(match);
+        var diceToRoll = match[1].split('');
 
         var results = [];
         diceToRoll.forEach(function(die) {
