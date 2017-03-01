@@ -111,8 +111,9 @@ bot.on("message", function(user, userID, channelID, message, event) {
     console.log(bot.channels[channelID].guild_id); //Woot! Thanks Discord.io discord!
     var serverID = bot.channels[channelID].guild_id;
 
-    if(!(serverID in serverSetup)) {
+    if(!(serverID in serverDice)) {
         setupServer(serverID);
+        console.log(serverSymbols[serverID]);
     }
 
     if (message === "ping") {
@@ -123,6 +124,7 @@ bot.on("message", function(user, userID, channelID, message, event) {
         serverDice = {};
         serverSymbols = {};
         serverSetup = {};
+        sendMessages(channelID, ["Clearing all saved emoji settings. I'll re-add them next time someone wants to roll."]);
     }
 
     if (message.match(poolMatch)) {
