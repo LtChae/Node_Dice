@@ -110,10 +110,10 @@ bot.on("message", function(user, userID, channelID, message, event) {
         return;
     }
     console.log(user + " - " + userID);
-    console.log("in " + channelID);
+//    console.log("in " + channelID);
     console.log(message);
     console.log("----------");
-    console.log(bot.channels[channelID].guild_id); //Woot! Thanks Discord.io discord!
+    console.log("Server ID" + bot.channels[channelID].guild_id); //Woot! Thanks Discord.io discord!
     var serverID = bot.channels[channelID].guild_id;
 
     if(!(serverID in serverDice)) {
@@ -129,6 +129,7 @@ bot.on("message", function(user, userID, channelID, message, event) {
         serverDice = {};
         serverSymbols = {};
         serverSetup = {};
+        console.log(serverSymbols[serverID]);
         sendMessages(channelID, ["Clearing all saved emoji settings. I'll re-add them next time someone wants to roll."]);
     }
 
