@@ -104,7 +104,8 @@ bot.on("ready", function(event) {
 });
 
 bot.on("message", function(user, userID, channelID, message, event) {
-    if (process.env.PORT === "true"){
+    console.log(process.env.maintenance);
+    if (process.env.maintenance === "true"){
         console.log("Ignoring message, in maintenance mode.");
         return;
     }
