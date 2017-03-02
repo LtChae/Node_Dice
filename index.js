@@ -43,7 +43,7 @@ function resultIs(result) {
 
 function setupServer(serverID) {
     var server = bot.servers[serverID];
-    var newConfig = require('./dice.js');
+    var newConfig = JSON.parse(JSON.stringify(require('./dice.js')));
     var diceEM = {
         "a":newConfig.ability,
         "d":newConfig.difficulty,
