@@ -115,7 +115,9 @@ bot.on("message", function(user, userID, channelID, message, event) {
     console.log("----------");
     console.log("Server ID" + bot.channels[channelID].guild_id); //Woot! Thanks Discord.io discord!
     var serverID = bot.channels[channelID].guild_id;
-
+    Object.keys(serverDice).forEach(function(thing) {
+        console.log(thing);
+    }
     if(!(serverID in serverDice)) {
         setupServer(serverID);
         console.log(serverSymbols[serverID]);
