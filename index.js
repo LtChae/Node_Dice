@@ -117,6 +117,7 @@ bot.on("message", function(user, userID, channelID, message, event) {
     var serverID = bot.channels[channelID].guild_id;
     Object.keys(serverDice).forEach(function(thing) {
         console.log(thing);
+        console.log(serverDice[thing]["b"]);
     });
     if(!(serverID in serverDice)) {
         setupServer(serverID);
