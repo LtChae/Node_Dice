@@ -198,7 +198,7 @@ bot.on("message", function(user, userID, channelID, message, event) {
             diceResults = diceResults.concat(result.results)
         });
         var triumphs = diceResults.filter(resultIs(triumph)).length;
-        var despair = diceResults.filter(resultIs(despair)).length
+        var despairs = diceResults.filter(resultIs(despair)).length
         var successes = diceResults.filter(resultIs(success)).length + triumphs;
         var failures = diceResults.filter(resultIs(failure)).length + despair;
         var threats = diceResults.filter(resultIs(threat)).length;
@@ -230,7 +230,7 @@ bot.on("message", function(user, userID, channelID, message, event) {
             }
         }
 
-        for(var i=0; i < despair; i++){
+        for(var i=0; i < despairs; i++){
             resultsMessage += serverSymbols[serverID].despair.code;
         }
         for(var i=0; i < triumphs; i++){
