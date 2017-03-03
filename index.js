@@ -200,7 +200,7 @@ bot.on("message", function(user, userID, channelID, message, event) {
         var triumphs = diceResults.filter(resultIs(triumph)).length;
         var despairs = diceResults.filter(resultIs(despair)).length
         var successes = diceResults.filter(resultIs(success)).length + triumphs;
-        var failures = diceResults.filter(resultIs(failure)).length + despair;
+        var failures = diceResults.filter(resultIs(failure)).length + despairs;
         var threats = diceResults.filter(resultIs(threat)).length;
         var advantages = diceResults.filter(resultIs(advantage)).length;
         var lightForce = diceResults.filter(resultIs(light)).length;
