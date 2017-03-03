@@ -55,7 +55,7 @@ function setupServer(serverID) {
     }
     var symbols = newConfig.symbols;
     var serverEmojis = server.emojis;
-    console.log(serverEmojis);
+//    console.log(serverEmojis);
     Object.keys(diceEM).forEach(function(dieKey) {
         diceEM[dieKey].forEach(function(side){
             var emoji = Object.keys(serverEmojis).find(function(it){
@@ -104,7 +104,7 @@ bot.on("ready", function(event) {
 });
 
 bot.on("message", function(user, userID, channelID, message, event) {
-    console.log(process.env.maintenance);
+//    console.log(process.env.maintenance);
     if (process.env.maintenance === "true"){
         console.log("Ignoring message, in maintenance mode.");
         return;
@@ -115,13 +115,8 @@ bot.on("message", function(user, userID, channelID, message, event) {
     console.log("----------");
     console.log("Server ID" + bot.channels[channelID].guild_id); //Woot! Thanks Discord.io discord!
     var serverID = bot.channels[channelID].guild_id;
-    Object.keys(serverDice).forEach(function(thing) {
-        console.log(thing);
-        console.log(serverDice[thing]["b"]);
-    });
     if(!(serverID in serverDice)) {
         setupServer(serverID);
-        console.log(serverSymbols[serverID]);
     }
 
     if (message === "ping") {
@@ -132,7 +127,6 @@ bot.on("message", function(user, userID, channelID, message, event) {
         serverDice = {};
         serverSymbols = {};
         serverSetup = {};
-        console.log(serverSymbols[serverID]);
         sendMessages(channelID, ["Clearing all saved emoji settings. I'll re-add them next time someone wants to roll."]);
     }
 
@@ -203,7 +197,6 @@ bot.on("message", function(user, userID, channelID, message, event) {
             returnMessage += result.code + " ";	
             diceResults = diceResults.concat(result.results)
         });
-        console.log(diceResults);
         var triumphs = diceResults.filter(resultIs(triumph)).length;
         var despair = diceResults.filter(resultIs(despair)).length
         var successes = diceResults.filter(resultIs(success)).length + triumphs;
@@ -249,7 +242,6 @@ bot.on("message", function(user, userID, channelID, message, event) {
         for(var i=0; i < darkForce; i++){
             resultsMessage += serverSymbols[serverID].dark.code;
         }
-        console.log(returnMessage);
         sendMessages(channelID, [returnMessage,resultsMessage]);
     }
 });
