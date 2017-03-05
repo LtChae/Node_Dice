@@ -14,7 +14,7 @@ http.createServer(function (req, res) {
 
 var Discord = require('discord.io');
 var bot = new Discord.Client({
-    token: "MjQ2MDI2MDQwNTA4NTQ3MDcy.CwUtmg.WAlGCQ9QyImc9t4FLTOOqzZia2c",
+    token: process.env.token,
     autorun: true
 });
 
@@ -32,6 +32,8 @@ var success = "Success", failure = "Failure", advantage = "Advantage", threat = 
 
 var serverDice = {};
 var serverSymbols = {};
+
+var channelDestiny = {};
 
 // var symbols = dice.symbols;
 
@@ -84,11 +86,12 @@ function setupServer(serverID) {
 }
 
 var diceMatch = /!Roll\[([adpcfbs]*)\]/;
-var destinyMatch = /!Flip ((Dark)|(Light))/;
-var poolMatch = /!Roll Destiny/;
-var clearMatch = /!Reset Destiny/;
-var showMatch = /!Show Destiny/;
-var emojiCodes = /Copy Me Too \\</;
+var diceHelpMatch = /^!Roll Help/;
+var destinyMatch = /^!Destiny Flip ((Dark)|(Light))/;
+var poolMatch = /^!Destiny Roll/;
+var clearMatch = /^!Destiny Reset/;
+var showMatch = /^!Destiny Show/;
+var destinyHelpMatch = /^!Destiny Help/;
 
 var pool = [];
 
@@ -105,6 +108,9 @@ bot.on("ready", function(event) {
 
 bot.on("message", function(user, userID, channelID, message, event) {
 //    console.log(process.env.maintenance);
+    if (user === "SWRPG_Dice" || user === "SWRPG_Dice_Beta"){
+        return;
+    }
     if (process.env.maintenance === "true"){
         console.log("Ignoring message, in maintenance mode.");
         return;
@@ -131,50 +137,89 @@ bot.on("message", function(user, userID, channelID, message, event) {
     }
 
     if (message.match(poolMatch)) {
-        if (!pool){
-            pool = [];
+        if (!channelDestiny[channelID]){
+            channelDestiny[channelID] = [];
         }
         var die = "f";
         var roll = Math.floor(Math.random() * serverDice[serverID][die].length);
-        var result = serverDice[serverID][die][roll].result;
-        pool = pool.concat(result);
-        var returnMessage =  "```Adding (" + result.join(", ") + ") to destiny pool```";
-        var poolMessage = "```Current destiny pool: " + pool.join(", ") + "```";
-        sendMessages(channelID, [returnMessage, poolMessage]);
+        var result = serverDice[serverID][die][roll];
+        channelDestiny[channelID] = channelDestiny[channelID].concat(result.results);
+        var resultSymbols = "";
+        
+        var returnMessage =  "Adding " + printSymbols(result.results, serverID) + " to destiny pool";
+        var poolMessage = "Current destiny pool: " + printSymbols(channelDestiny[channelID], serverID);
+        sendMessages(channelID, [result.code, returnMessage, poolMessage]);
     }
 
     if (message.match(clearMatch)) {
-        pool = [];	
-        sendMessages(channelID, ["```Destiny Pool reset.```"]);
+        delete channelDestiny[channelID];
+        sendMessages(channelID, ["Destiny Pool reset for this channel."]);
     }
 
-    if (message.match(showMatch)) {
-        // pool = [];	
-        sendMessages(channelID, ["```Current destiny pool: " + pool.join(", ") + "```"]);
+    if (message.match(showMatch)) {	
+        if (!channelDestiny[channelID]){
+            sendMessages(channelID, ["No Destiny points have been rolled for this channel. Use `!Roll Destiny` to begin."]);
+            return;
+        }
+        var poolMessage = "Current destiny pool: " + printSymbols(channelDestiny[channelID], serverID);
+        sendMessages(channelID, [poolMessage]);
+    }
+    
+    if (message.match(destinyHelpMatch)){
+        var message = "```Available Commands:\n";
+        message += "!Destiny Roll\n";
+        message += "!Destiny Flip (Dark|Light)\n";
+        message += "!Destiny Show\n";
+        message += "!Destiny Reset\n```";
+        sendMessages(channelID, [message]);
     }
 
     if (message.match(destinyMatch)) {
-        var returnMessage = "```";
-        console.log(message.indexOf("Dark"));
-        console.log(message.indexOf("Light"));
-        if (message.indexOf("Dark") !== -1) {
+        if (!channelDestiny[channelID]){
+            sendMessages(channelID, ["No Destiny points have been rolled for this channel. Use `!Destiny Roll` to begin, or `!Destiny Help` for more information."]);
+            return;
+        }
+        
+        var returnMessage = "";
+        var pool = channelDestiny[channelID];
+        
+        var match = destinyMatch.exec(message);
+        
+        if (match[1] === "Dark") {
             if (pool.indexOf(dark) !== -1) {
-                console.log("Dark Flip");
-                returnMessage += "Flipping a Dark Side point, thunder rolls.";
+                returnMessage += "Flipping a Dark Side point.";
                 pool[pool.indexOf(dark)] = light;
+            } else {
+                returnMessage += "No Dark Side points to flip.";
             }
-        } else if (message.indexOf("Light") !== -1) {
+        } else if (match[1] === "Light" !== -1) {
             if (pool.indexOf(light) !== -1) {
-                console.log("Light Flip");
-                returnMessage += "Flipping a Light Side point, fortune favours you.";
+                returnMessage += "Flipping a Light Side point.";
                 pool[pool.indexOf(light)] = dark;
+            } else {
+               returnMessage += "No Light Side points to flip."; 
             }
         } else {
             returnMessage += "The Force is confused.";
         }
-        returnMessage += "```";
-        var poolMessage = "```Current destiny pool: " + pool.join(", ") + "```";
+
+        var poolMessage = "Current destiny pool: " + printSymbols(pool, serverID);
         sendMessages(channelID, [returnMessage, poolMessage]);
+    }
+    
+    if (message.match(diceHelpMatch)){
+        var message = "```Dice Bot Help:\n";
+        message += "Send commands in the form of: !Roll[Some Dice Characters]\n";
+        message += "Where 'Some Dice Characters' are any of these:\n";
+        message += "a = Ability (Green)\n";
+        message += "d = Difficulty (Purple)\n";
+        message += "s = Setback (Black)\n";
+        message += "b = Boost (Blue)\n";
+        message += "p = Proficiency (Yellow)\n";
+        message += "c = Challenge (Challenge)\n";
+        message += "f = Force (White)\n";
+        message += "Example: !Roll[aadd]```";
+        sendMessages(channelID, [message]);
     }
 
     if (message.match(diceMatch)) {
@@ -252,6 +297,14 @@ bot.on("disconnect", function() {
 });
 
 /*Function declaration area*/
+function printSymbols(symbols, serverID) {
+    var result = "";
+    symbols.forEach(function(symbol){
+       result += serverSymbols[serverID][symbol.toLowerCase()].code
+    });
+    return result;
+}
+
 function sendMessages(ID, messageArr, interval) {
     var resArr = [], len = messageArr.length;
     var callback = typeof(arguments[2]) === 'function' ?  arguments[2] :  arguments[3];
