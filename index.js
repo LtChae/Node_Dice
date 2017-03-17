@@ -88,6 +88,7 @@ function setupServer(serverID) {
 var diceMatch = /!Roll\[([adpcfbs]*)\]/;
 var diceHelpMatch = /^!Roll Help/;
 var destinyMatch = /^!Destiny Flip ((Dark)|(Light))/;
+var destinyAddMatch = /^!Destiny Add ((Dark)|(Light))/;
 var poolMatch = /^!Destiny Roll/;
 var clearMatch = /^!Destiny Reset/;
 var showMatch = /^!Destiny Show/;
@@ -115,6 +116,8 @@ bot.on("message", function(user, userID, channelID, message, event) {
         console.log("Ignoring message, in maintenance mode.");
         return;
     }
+    bot.setPresence( {game:"!Roll Help"} );
+    
     console.log(user + " - " + userID);
 //    console.log("in " + channelID);
     console.log(message);
@@ -158,7 +161,7 @@ bot.on("message", function(user, userID, channelID, message, event) {
 
     if (message.match(showMatch)) {	
         if (!channelDestiny[channelID]){
-            sendMessages(channelID, ["No Destiny points have been rolled for this channel. Use `!Roll Destiny` to begin."]);
+            sendMessages(channelID, ["No Destiny points have been rolled for this channel. Use `!Destiny Roll` to begin."]);
             return;
         }
         var poolMessage = "Current destiny pool: " + printSymbols(channelDestiny[channelID], serverID);
@@ -169,6 +172,7 @@ bot.on("message", function(user, userID, channelID, message, event) {
         var message = "```Available Commands:\n";
         message += "!Destiny Roll\n";
         message += "!Destiny Flip (Dark|Light)\n";
+        message += "!Destiny Add (Dark|Light)\n";
         message += "!Destiny Show\n";
         message += "!Destiny Reset\n```";
         sendMessages(channelID, [message]);
@@ -192,7 +196,7 @@ bot.on("message", function(user, userID, channelID, message, event) {
             } else {
                 returnMessage += "No Dark Side points to flip.";
             }
-        } else if (match[1] === "Light" !== -1) {
+        } else if (match[1] === "Light") {
             if (pool.indexOf(light) !== -1) {
                 returnMessage += "Flipping a Light Side point.";
                 pool[pool.indexOf(light)] = dark;
@@ -204,7 +208,24 @@ bot.on("message", function(user, userID, channelID, message, event) {
         }
 
         var poolMessage = "Current destiny pool: " + printSymbols(pool, serverID);
-        sendMessages(channelID, [returnMessage, poolMessage]);
+        sendMessages(channelID, [returnMessage + "\n" + poolMessage]);
+    }
+    
+    if (message.match(destinyAddMatch)) {
+        if (!channelDestiny[channelID]){
+            channelDestiny[channelID] = [];
+        }
+        
+        var returnMessage = "";
+        var pool = channelDestiny[channelID];
+        
+        var match = destinyAddMatch.exec(message);
+        
+        returnMessage += "Adding " + printSymbols([match[1]], serverID) + " to the destiny pool."
+        channelDestiny[channelID].push(match[1])
+
+        var poolMessage = "Current destiny pool: " + printSymbols(pool, serverID);
+        sendMessages(channelID, [returnMessage + "\n" + poolMessage]);
     }
     
     if (message.match(diceHelpMatch)){
@@ -287,7 +308,12 @@ bot.on("message", function(user, userID, channelID, message, event) {
         for(var i=0; i < darkForce; i++){
             resultsMessage += serverSymbols[serverID].dark.code;
         }
-        sendMessages(channelID, [returnMessage,resultsMessage]);
+        
+        if (resultsMessage === ""){
+            resultsMessage = "`All symbols cancelled out or none were rolled.`"
+        }
+        
+        sendMessages(channelID, [returnMessage, resultsMessage]);
     }
 });
 
@@ -308,7 +334,7 @@ function printSymbols(symbols, serverID) {
 function sendMessages(ID, messageArr, interval) {
     var resArr = [], len = messageArr.length;
     var callback = typeof(arguments[2]) === 'function' ?  arguments[2] :  arguments[3];
-    if (typeof(interval) !== 'number') interval = 1000;
+    if (typeof(interval) !== 'number') interval = 100;
 
     function _sendMessages() {
         setTimeout(function() {
@@ -330,7 +356,7 @@ function sendMessages(ID, messageArr, interval) {
 function sendFiles(channelID, fileArr, interval) {
     var resArr = [], len = fileArr.length;
     var callback = typeof(arguments[2]) === 'function' ? arguments[2] : arguments[3];
-    if (typeof(interval) !== 'number') interval = 1000;
+    if (typeof(interval) !== 'number') interval = 1;
 
     function _sendFiles() {
         setTimeout(function() {
