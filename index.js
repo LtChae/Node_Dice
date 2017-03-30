@@ -237,7 +237,7 @@ bot.on("message", function(user, userID, channelID, message, event) {
         message += "s = Setback (Black)\n";
         message += "b = Boost (Blue)\n";
         message += "p = Proficiency (Yellow)\n";
-        message += "c = Challenge (Challenge)\n";
+        message += "c = Challenge (Red)\n";
         message += "f = Force (White)\n";
         message += "Example: !Roll[aadd]```";
         sendMessages(channelID, [message]);
