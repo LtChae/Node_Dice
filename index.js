@@ -85,14 +85,15 @@ function setupServer(serverID) {
 
 }
 
-var diceMatch = /!Roll\[([adpcfbs]*)\]/;
-var diceHelpMatch = /^!Roll Help/;
-var destinyMatch = /^!Destiny Flip ((Dark)|(Light))/;
-var destinyAddMatch = /^!Destiny Add ((Dark)|(Light))/;
-var poolMatch = /^!Destiny Roll/;
-var clearMatch = /^!Destiny Reset/;
-var showMatch = /^!Destiny Show/;
-var destinyHelpMatch = /^!Destiny Help/;
+var diceMatch = /!Roll[ ]?\[([adpcfbs]*)\]/i;
+var diceHelpMatch = /^!Roll Help/i;
+var destinyMatch = /^!Destiny Flip ((Dark)|(Light))/i;
+var destinyAddMatch = /^!Destiny Add ((Dark)|(Light))/i;
+var destinySetMatch = /^![Dd]estiny Set \[([DL]*)\]/i;
+var poolMatch = /^!Destiny Roll/i;
+var clearMatch = /^!Destiny Reset/i;
+var showMatch = /^!Destiny Show/i;
+var destinyHelpMatch = /^!Destiny Help/i;
 
 var pool = [];
 
@@ -174,7 +175,9 @@ bot.on("message", function(user, userID, channelID, message, event) {
         message += "!Destiny Flip (Dark|Light)\n";
         message += "!Destiny Add (Dark|Light)\n";
         message += "!Destiny Show\n";
-        message += "!Destiny Reset\n```";
+        message += "!Destiny Reset\n";
+        message += "!Destiny Set [DL]\n";
+        message += " ^ This can be in any combination of (D)ark and (L)ight```";
         sendMessages(channelID, [message]);
     }
 
@@ -228,6 +231,32 @@ bot.on("message", function(user, userID, channelID, message, event) {
         sendMessages(channelID, [returnMessage + "\n" + poolMessage]);
     }
     
+    if (message.match(destinySetMatch)) {
+        delete channelDestiny[channelID];
+        if (!channelDestiny[channelID]){
+            channelDestiny[channelID] = [];
+        }
+        
+        var returnMessage = "";
+        var pool = channelDestiny[channelID];
+        
+        var match = destinySetMatch.exec(message);
+        
+        var destinyTokens = match[1].split('');
+        destinyTokens.forEach(function(token) {
+            token = token.toLocaleLowerCase();
+            if (token == 'd') {
+                channelDestiny[channelID].push('Dark');
+            } else if (token == 'l') {
+                channelDestiny[channelID].push('Light');
+            }
+            
+        });
+
+        var poolMessage = "Destiny Pool set as specified: " + printSymbols(pool, serverID);
+        sendMessages(channelID, [returnMessage + "\n" + poolMessage]);
+    }
+    
     if (message.match(diceHelpMatch)){
         var message = "```Dice Bot Help:\n";
         message += "Send commands in the form of: !Roll[Some Dice Characters]\n";
@@ -251,6 +280,7 @@ bot.on("message", function(user, userID, channelID, message, event) {
 
         var results = [];
         diceToRoll.forEach(function(die) {
+            die = die.toLocaleLowerCase();
             if (serverDice[serverID][die]) {
                 var roll = Math.floor(Math.random() * serverDice[serverID][die].length);
                 results = results.concat(serverDice[serverID][die][roll]);
