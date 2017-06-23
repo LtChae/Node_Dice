@@ -164,7 +164,7 @@ bot.on("message", function(user, userID, channelID, message, event) {
     if (message.match(showMatch)) {	
         let destinyPool = new DestinyPool(channelID, []);
         destinyPool.getPool().then(function(pool){
-            if (pool && pool == []){
+            if (pool.length == 0){
                 sendMessages(channelID, ["No Destiny points have been rolled for this channel. Use `!Destiny Roll` to begin."]);
                 return;
             } else {
