@@ -155,6 +155,7 @@ bot.on("message", function(user, userID, channelID, message, event) {
     }
 
     if (message.match(clearMatch)) {
+        let destinyPool = new DestinyPool(channelID, []);
         destinyPool.setPool([]).then(function(result){
             sendMessages(channelID, ["Destiny Pool reset for this channel."]);
         });        
