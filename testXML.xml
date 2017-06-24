@@ -1,0 +1,490 @@
+<?xml version="1.0"?>
+<Character xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <LastChanged>2017-06-19T11:08:01.2</LastChanged>
+  <NotPersisted>false</NotPersisted>
+  <FileName>Char0.xml</FileName>
+  <Name />
+  <Key>7cbea457-a374-4120-9dd6-addc64c06184</Key>
+  <Description>
+    <CharName>Pollux Griff</CharName>
+    <PlayerName>Lucas Gamber</PlayerName>
+    <GenderValue>cdgMale</GenderValue>
+    <Age>34</Age>
+    <Height>6'0"</Height>
+    <Build>Fit</Build>
+    <Hair>n/a</Hair>
+    <Eyes>Blue</Eyes>
+    <Gender>Male</Gender>
+  </Description>
+  <Characteristics>
+    <CharCharacteristic>
+      <Key>BR</Key>
+      <Name>Brawn</Name>
+      <Rank>
+        <SpeciesRanks>1</SpeciesRanks>
+        <PurchasedRanks>1</PurchasedRanks>
+      </Rank>
+    </CharCharacteristic>
+    <CharCharacteristic>
+      <Key>AG</Key>
+      <Name>Agility</Name>
+      <Rank>
+        <SpeciesRanks>3</SpeciesRanks>
+        <PurchasedRanks>1</PurchasedRanks>
+      </Rank>
+    </CharCharacteristic>
+    <CharCharacteristic>
+      <Key>INT</Key>
+      <Name>Intellect</Name>
+      <Rank>
+        <SpeciesRanks>2</SpeciesRanks>
+      </Rank>
+    </CharCharacteristic>
+    <CharCharacteristic>
+      <Key>CUN</Key>
+      <Name>Cunning</Name>
+      <Rank>
+        <SpeciesRanks>2</SpeciesRanks>
+      </Rank>
+    </CharCharacteristic>
+    <CharCharacteristic>
+      <Key>WIL</Key>
+      <Name>Willpower</Name>
+      <Rank>
+        <SpeciesRanks>2</SpeciesRanks>
+        <PurchasedRanks>1</PurchasedRanks>
+      </Rank>
+    </CharCharacteristic>
+    <CharCharacteristic>
+      <Key>PR</Key>
+      <Name>Presence</Name>
+      <Rank>
+        <SpeciesRanks>2</SpeciesRanks>
+      </Rank>
+    </CharCharacteristic>
+  </Characteristics>
+  <Motivations>
+    <CharMotivation>
+      <Key>0</Key>
+      <Name>Discovery</Name>
+      <MotiveKey>DISCOVERY</MotiveKey>
+      <SpecMotiveKey>DISCOVERYSM1</SpecMotiveKey>
+    </CharMotivation>
+  </Motivations>
+  <Specializations>
+    <CharSpecialization>
+      <Key>PATH</Key>
+      <Name>Pathfinder</Name>
+      <isStartingSpec>true</isStartingSpec>
+      <isCareerSpec>true</isCareerSpec>
+      <Talents>
+        <CharTalent>
+          <Key>GRIT</Key>
+          <Col>0</Col>
+          <Row>0</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>KEENEYED</Key>
+          <Col>1</Col>
+          <Row>0</Row>
+          <Purchased>true</Purchased>
+        </CharTalent>
+        <CharTalent>
+          <Key>FORAG</Key>
+          <Col>2</Col>
+          <Row>0</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>SWIFT</Key>
+          <Col>3</Col>
+          <Row>0</Row>
+          <Purchased>true</Purchased>
+        </CharTalent>
+        <CharTalent>
+          <Key>KEENEYED</Key>
+          <Col>0</Col>
+          <Row>1</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>OUTDOOR</Key>
+          <Col>1</Col>
+          <Row>1</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>TOUGH</Key>
+          <Col>2</Col>
+          <Row>1</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>OUTDOOR</Key>
+          <Col>3</Col>
+          <Row>1</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>ANIMALEMP</Key>
+          <Col>0</Col>
+          <Row>2</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>ANIMALBOND</Key>
+          <Col>1</Col>
+          <Row>2</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>GRIT</Key>
+          <Col>2</Col>
+          <Row>2</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>SLEIGHTMIND</Key>
+          <Col>3</Col>
+          <Row>2</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>MENTBOND</Key>
+          <Col>0</Col>
+          <Row>3</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>FORCERAT</Key>
+          <Col>1</Col>
+          <Row>3</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>QUICKMOVE</Key>
+          <Col>2</Col>
+          <Row>3</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>TOUGH</Key>
+          <Col>3</Col>
+          <Row>3</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>SHAREPAIN</Key>
+          <Col>0</Col>
+          <Row>4</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>ENDUR</Key>
+          <Col>1</Col>
+          <Row>4</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>NATOUT</Key>
+          <Col>2</Col>
+          <Row>4</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>DEDI</Key>
+          <Col>3</Col>
+          <Row>4</Row>
+        </CharTalent>
+      </Talents>
+    </CharSpecialization>
+  </Specializations>
+  <ForcePowers>
+  </ForcePowers>
+  <SigAbilities />
+  <Skills>
+    <CharSkill>
+      <Key>ASTRO</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>ATHL</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>BRAWL</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>CHARM</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>COERC</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>COMP</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>COOL</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>COORD</Key>
+      <Rank>
+        <SpeciesRanks>1</SpeciesRanks>
+      </Rank>
+    </CharSkill>
+    <CharSkill>
+      <Key>CORE</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>DECEP</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>DISC</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>EDU</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>GUNN</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>LEAD</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>LTSABER</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>LORE</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>MECH</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>MED</Key>
+      <Rank />
+      <isCareer>true</isCareer>
+    </CharSkill>
+    <CharSkill>
+      <Key>MELEE</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>NEG</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>OUT</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>PERC</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>PILOTPL</Key>
+      <Rank />
+      <isCareer>true</isCareer>
+    </CharSkill>
+    <CharSkill>
+      <Key>PILOTSP</Key>
+      <Rank />
+      <isCareer>true</isCareer>
+    </CharSkill>
+    <CharSkill>
+      <Key>RANGHVY</Key>
+      <Rank />
+      <isCareer>true</isCareer>
+    </CharSkill>
+    <CharSkill>
+      <Key>RANGLT</Key>
+      <Rank />
+      <isCareer>true</isCareer>
+    </CharSkill>
+    <CharSkill>
+      <Key>RESIL</Key>
+      <Rank />
+      <isCareer>true</isCareer>
+    </CharSkill>
+    <CharSkill>
+      <Key>SKUL</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>STEAL</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>SW</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>SURV</Key>
+      <Rank />
+      <isCareer>true</isCareer>
+    </CharSkill>
+    <CharSkill>
+      <Key>UND</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>VIGIL</Key>
+      <Rank />
+      <isCareer>true</isCareer>
+    </CharSkill>
+    <CharSkill>
+      <Key>XEN</Key>
+      <Rank />
+      <isCareer>true</isCareer>
+    </CharSkill>
+    <CharSkill>
+      <Key>WARF</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>CYBERNETICS</Key>
+      <Rank />
+    </CharSkill>
+  </Skills>
+  <ObOptions>
+    <StartingSize>5</StartingSize>
+  </ObOptions>
+  <Obligations>
+    <CharObligation>
+      <Key>0</Key>
+      <Name>Thrill Seeker</Name>
+      <Size>5</Size>
+      <ObKey>THRILLSEEK</ObKey>
+    </CharObligation>
+  </Obligations>
+  <DutOptions>
+    <StartingSize>5</StartingSize>
+  </DutOptions>
+  <Duties />
+  <Experience>
+    <ExperienceRanks>
+      <SpeciesRanks>100</SpeciesRanks>
+    </ExperienceRanks>
+    <UsedExperience>100</UsedExperience>
+  </Experience>
+  <Attributes>
+    <SoakValue>
+      <StartingRanks>2</StartingRanks>
+      <PurchasedRanks>1</PurchasedRanks>
+    </SoakValue>
+    <WoundThreshold>
+      <StartingRanks>2</StartingRanks>
+      <SpeciesRanks>8</SpeciesRanks>
+    </WoundThreshold>
+    <StrainThreshold>
+      <StartingRanks>3</StartingRanks>
+      <SpeciesRanks>10</SpeciesRanks>
+    </StrainThreshold>
+    <DefenseRanged>
+      <PurchasedRanks>1</PurchasedRanks>
+    </DefenseRanged>
+    <DefenseMelee>
+      <PurchasedRanks>1</PurchasedRanks>
+    </DefenseMelee>
+    <ForceRating>
+      <TalentRanks>1</TalentRanks>
+    </ForceRating>
+  </Attributes>
+  <Species>
+    <SpeciesKey>SATHARI</SpeciesKey>
+    <SubSpeciesKey />
+    <SelectedOptions>
+      <CharOption>
+        <ChoiceKey>SATHARICH1</ChoiceKey>
+        <OptionKey>SATHARICH1OP1</OptionKey>
+      </CharOption>
+    </SelectedOptions>
+  </Species>
+  <Career>
+    <CareerKey>SEEKER</CareerKey>
+    <StartingSpecKey>PATH</StartingSpecKey>
+    <CareerSkills />
+    <CareerSpecSkills />
+  </Career>
+  <Class>
+    <ClassKey>LOW</ClassKey>
+  </Class>
+  <Hook>
+    <HookKey>FUGITIVE</HookKey>
+  </Hook>
+  <Attitude>
+    <AttitudeKey>DUTYTRAD</AttitudeKey>
+  </Attitude>
+  <Weapons>
+    <CharWeapon>
+      <ItemKey>DIIRO</ItemKey>
+      <Key>b7f9daec-556a-4587-ab13-0988d3e59d26</Key>
+      <Equipped>true</Equipped>
+      <Held>true</Held>
+      <Count>1</Count>
+    </CharWeapon>
+    <CharWeapon>
+      <ItemKey>PRECXMARK</ItemKey>
+      <Key>1933e0cd-c76a-4c71-a8c3-850182a4c378</Key>
+      <Equipped>true</Equipped>
+      <Held>true</Held>
+      <Count>1</Count>
+    </CharWeapon>
+    <CharWeapon>
+      <ItemKey />
+      <Key>UNARMED</Key>
+      <Count>1</Count>
+      <Innate>true</Innate>
+    </CharWeapon>
+  </Weapons>
+  <Armor>
+    <CharArmor>
+      <ItemKey>CONROBE</ItemKey>
+      <Key>7c68c67e-5331-42cb-b5bd-2199a4d72ea3</Key>
+      <Equipped>true</Equipped>
+      <Held>true</Held>
+      <Count>1</Count>
+    </CharArmor>
+    <CharArmor>
+      <ItemKey>AC</ItemKey>
+      <Key>cf600eb7-a14f-42de-9ecc-cf100f3fc365</Key>
+      <Equipped>true</Equipped>
+      <Held>true</Held>
+      <Count>1</Count>
+    </CharArmor>
+  </Armor>
+  <Gear>
+    <CharGear>
+      <ItemKey>RAQUOR</ItemKey>
+      <Key>2f4bae83-0468-466c-9638-41c4dd690e29</Key>
+      <Count>3</Count>
+    </CharGear>
+  </Gear>
+  <Vehicles />
+  <NPCs />
+  <SummaryPriorities />
+  <Story />
+  <Credits>462</Credits>
+  <Morality>
+    <Options>
+      <Option>Plus2500Cr</Option>
+    </Options>
+    <MoralityPairs>
+      <MoralityPair>
+        <StrengthKey>DISCIPLINE</StrengthKey>
+        <WeaknessKey>OBSTINATENESS</WeaknessKey>
+      </MoralityPair>
+    </MoralityPairs>
+    <MoralityValue>50</MoralityValue>
+  </Morality>
+  <Grants>
+    <UseGrants>false</UseGrants>
+  </Grants>
+  <Rigger>
+    <VehicleKey />
+    <WeaponIndex>-1</WeaponIndex>
+    <custRigger />
+    <MaxSilhouette>0</MaxSilhouette>
+  </Rigger>
+  <Schematics />
+  <UseGrants>false</UseGrants>
+  <Portrait></Portrait>
+  <AutoRecalc>true</AutoRecalc>
+</Character>

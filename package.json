@@ -1,18 +1,22 @@
 {
-  "name": "NodeSW_Dice",
-  "version": "1.0.0",
-  "dependencies": {
-    "discord.io": "^1.0.0",
-    "serve-static": "^1.0.0",
-    "finalhandler": "^1.0.0",
-    "pg": "^6.2.4"
-  },
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "name": "NodeSW_Dice",
+    "version": "1.0.0",
+    "dependencies": {
+        "discord.io": "^1.0.0",
+        "serve-static": "^1.0.0",
+        "finalhandler": "^1.0.0",
+        "pg": "^6.2.4",
+        "mocha":"^3.0.0",
+        "filereader": "^0.10.3",
+        "file-api": "^0.10.4",
+        "xml2js": "^0.4.17"
+    },
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "mocha"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
 }
