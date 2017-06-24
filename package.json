@@ -9,7 +9,8 @@
         "mocha":"^3.0.0",
         "filereader": "^0.10.3",
         "file-api": "^0.10.4",
-        "xml2js": "^0.4.17"
+        "xml2js": "^0.4.17",
+        "lodash": "^4.17.4"
     },
     "description": "",
     "main": "index.js",

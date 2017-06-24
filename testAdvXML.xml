@@ -1,0 +1,1305 @@
+<?xml version="1.0"?>
+<Character xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <LastChanged>2017-06-06T20:40:17.92</LastChanged>
+  <NotPersisted>false</NotPersisted>
+  <FileName>Char36.xml</FileName>
+  <Name />
+  <Key>6565c658-91f4-4c97-8838-2f3d188700c1</Key>
+  <Description>
+    <CharName>Joller</CharName>
+    <PlayerName>Tim</PlayerName>
+    <GenderValue>cdgMale</GenderValue>
+    <Campaign>Rebel Cry</Campaign>
+    <Gender>Male</Gender>
+  </Description>
+  <Characteristics>
+    <CharCharacteristic>
+      <Key>BR</Key>
+      <Name>Brawn</Name>
+      <Rank>
+        <SpeciesRanks>1</SpeciesRanks>
+      </Rank>
+    </CharCharacteristic>
+    <CharCharacteristic>
+      <Key>AG</Key>
+      <Name>Agility</Name>
+      <Rank>
+        <SpeciesRanks>3</SpeciesRanks>
+      </Rank>
+    </CharCharacteristic>
+    <CharCharacteristic>
+      <Key>INT</Key>
+      <Name>Intellect</Name>
+      <Rank>
+        <SpeciesRanks>3</SpeciesRanks>
+        <TalentRanks>1</TalentRanks>
+        <PurchasedRanks>2</PurchasedRanks>
+      </Rank>
+    </CharCharacteristic>
+    <CharCharacteristic>
+      <Key>CUN</Key>
+      <Name>Cunning</Name>
+      <Rank>
+        <SpeciesRanks>2</SpeciesRanks>
+      </Rank>
+    </CharCharacteristic>
+    <CharCharacteristic>
+      <Key>WIL</Key>
+      <Name>Willpower</Name>
+      <Rank>
+        <SpeciesRanks>1</SpeciesRanks>
+      </Rank>
+    </CharCharacteristic>
+    <CharCharacteristic>
+      <Key>PR</Key>
+      <Name>Presence</Name>
+      <Rank>
+        <SpeciesRanks>2</SpeciesRanks>
+      </Rank>
+    </CharCharacteristic>
+  </Characteristics>
+  <Motivations>
+    <CharMotivation>
+      <Key>0</Key>
+      <Name>Innovation</Name>
+      <MotiveKey>INNOV</MotiveKey>
+      <SpecMotiveKey>INNOVINV</SpecMotiveKey>
+    </CharMotivation>
+  </Motivations>
+  <Specializations>
+    <CharSpecialization>
+      <Key>OUTLAW</Key>
+      <Name>Outlaw Tech</Name>
+      <isStartingSpec>true</isStartingSpec>
+      <isCareerSpec>true</isCareerSpec>
+      <Talents>
+        <CharTalent>
+          <Key>TINK</Key>
+          <Col>0</Col>
+          <Row>0</Row>
+          <Purchased>true</Purchased>
+        </CharTalent>
+        <CharTalent>
+          <Key>UTINNI</Key>
+          <Col>1</Col>
+          <Row>0</Row>
+          <Purchased>true</Purchased>
+        </CharTalent>
+        <CharTalent>
+          <Key>SPKBIN</Key>
+          <Col>2</Col>
+          <Row>0</Row>
+          <Purchased>true</Purchased>
+        </CharTalent>
+        <CharTalent>
+          <Key>TINK</Key>
+          <Col>3</Col>
+          <Row>0</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>SOLREP</Key>
+          <Col>0</Col>
+          <Row>1</Row>
+          <Purchased>true</Purchased>
+        </CharTalent>
+        <CharTalent>
+          <Key>GRIT</Key>
+          <Col>1</Col>
+          <Row>1</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>UTINNI</Key>
+          <Col>2</Col>
+          <Row>1</Row>
+          <Purchased>true</Purchased>
+        </CharTalent>
+        <CharTalent>
+          <Key>TOUGH</Key>
+          <Col>3</Col>
+          <Row>1</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>UTIL</Key>
+          <Col>0</Col>
+          <Row>2</Row>
+          <Purchased>true</Purchased>
+        </CharTalent>
+        <CharTalent>
+          <Key>SIDESTEP</Key>
+          <Col>1</Col>
+          <Row>2</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>BRA</Key>
+          <Col>2</Col>
+          <Row>2</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>DEFSTA</Key>
+          <Col>3</Col>
+          <Row>2</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>JURY</Key>
+          <Col>0</Col>
+          <Row>3</Row>
+          <Purchased>true</Purchased>
+        </CharTalent>
+        <CharTalent>
+          <Key>SPKBIN</Key>
+          <Col>1</Col>
+          <Row>3</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>INVENT</Key>
+          <Col>2</Col>
+          <Row>3</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>JURY</Key>
+          <Col>3</Col>
+          <Row>3</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>INVENT</Key>
+          <Col>0</Col>
+          <Row>4</Row>
+          <Purchased>true</Purchased>
+        </CharTalent>
+        <CharTalent>
+          <Key>DEDI</Key>
+          <Col>1</Col>
+          <Row>4</Row>
+          <Purchased>true</Purchased>
+          <BonusChars>
+            <BonusChar>
+              <CharKey>INT</CharKey>
+              <Bonus>1</Bonus>
+            </BonusChar>
+          </BonusChars>
+        </CharTalent>
+        <CharTalent>
+          <Key>KNOWSCH</Key>
+          <Col>2</Col>
+          <Row>4</Row>
+        </CharTalent>
+        <CharTalent>
+          <Key>BRA</Key>
+          <Col>3</Col>
+          <Row>4</Row>
+        </CharTalent>
+      </Talents>
+    </CharSpecialization>
+  </Specializations>
+  <ForcePowers />
+  <SigAbilities />
+  <Skills>
+    <CharSkill>
+      <Key>ASTRO</Key>
+      <Rank />
+      <isCareer>true</isCareer>
+    </CharSkill>
+    <CharSkill>
+      <Key>ATHL</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>BRAWL</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>CHARM</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>COERC</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>COMP</Key>
+      <Rank>
+        <CareerRanks>1</CareerRanks>
+        <PurchasedRanks>2</PurchasedRanks>
+      </Rank>
+      <isCareer>true</isCareer>
+    </CharSkill>
+    <CharSkill>
+      <Key>COOL</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>COORD</Key>
+      <Rank>
+        <CareerRanks>1</CareerRanks>
+      </Rank>
+      <isCareer>true</isCareer>
+    </CharSkill>
+    <CharSkill>
+      <Key>CORE</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>DECEP</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>DISC</Key>
+      <Rank />
+      <isCareer>true</isCareer>
+    </CharSkill>
+    <CharSkill>
+      <Key>EDU</Key>
+      <Rank />
+      <isCareer>true</isCareer>
+    </CharSkill>
+    <CharSkill>
+      <Key>GUNN</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>LEAD</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>LTSABER</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>LORE</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>MECH</Key>
+      <Rank>
+        <SpeciesRanks>1</SpeciesRanks>
+        <CareerRanks>1</CareerRanks>
+        <PurchasedRanks>1</PurchasedRanks>
+      </Rank>
+      <isCareer>true</isCareer>
+    </CharSkill>
+    <CharSkill>
+      <Key>MED</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>MELEE</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>NEG</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>OUT</Key>
+      <Rank />
+      <isCareer>true</isCareer>
+    </CharSkill>
+    <CharSkill>
+      <Key>PERC</Key>
+      <Rank>
+        <CareerRanks>1</CareerRanks>
+      </Rank>
+      <isCareer>true</isCareer>
+    </CharSkill>
+    <CharSkill>
+      <Key>PILOTPL</Key>
+      <Rank>
+        <PurchasedRanks>1</PurchasedRanks>
+      </Rank>
+      <isCareer>true</isCareer>
+    </CharSkill>
+    <CharSkill>
+      <Key>PILOTSP</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>RANGHVY</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>RANGLT</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>RESIL</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>SKUL</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>STEAL</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>SW</Key>
+      <Rank>
+        <CareerRanks>1</CareerRanks>
+      </Rank>
+      <isCareer>true</isCareer>
+    </CharSkill>
+    <CharSkill>
+      <Key>SURV</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>UND</Key>
+      <Rank>
+        <CareerRanks>1</CareerRanks>
+      </Rank>
+      <isCareer>true</isCareer>
+    </CharSkill>
+    <CharSkill>
+      <Key>VIGIL</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>XEN</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>WARF</Key>
+      <Rank />
+    </CharSkill>
+    <CharSkill>
+      <Key>CYBERNETICS</Key>
+      <Rank />
+    </CharSkill>
+  </Skills>
+  <ObOptions>
+    <StartingSize>5</StartingSize>
+  </ObOptions>
+  <Obligations />
+  <DutOptions>
+    <StartingSize>15</StartingSize>
+    <Plus5XP>true</Plus5XP>
+  </DutOptions>
+  <Duties>
+    <CharDuty>
+      <Key>0</Key>
+      <Name>Tech Procurement</Name>
+      <Size>15</Size>
+      <DutKey>TECHPROCUREMENT</DutKey>
+    </CharDuty>
+  </Duties>
+  <Experience>
+    <ExperienceRanks>
+      <StartingRanks>5</StartingRanks>
+      <SpeciesRanks>90</SpeciesRanks>
+    </ExperienceRanks>
+    <UsedExperience>255</UsedExperience>
+  </Experience>
+  <Attributes>
+    <SoakValue>
+      <StartingRanks>1</StartingRanks>
+      <PurchasedRanks>2</PurchasedRanks>
+    </SoakValue>
+    <WoundThreshold>
+      <StartingRanks>1</StartingRanks>
+      <SpeciesRanks>9</SpeciesRanks>
+    </WoundThreshold>
+    <StrainThreshold>
+      <StartingRanks>1</StartingRanks>
+      <SpeciesRanks>11</SpeciesRanks>
+    </StrainThreshold>
+    <DefenseRanged>
+      <PurchasedRanks>1</PurchasedRanks>
+    </DefenseRanged>
+    <DefenseMelee>
+      <PurchasedRanks>1</PurchasedRanks>
+    </DefenseMelee>
+    <ForceRating />
+  </Attributes>
+  <Species>
+    <SpeciesKey>CHADRA</SpeciesKey>
+    <SubSpeciesKey />
+    <SelectedOptions>
+      <CharOption>
+        <ChoiceKey>CHADAB1</ChoiceKey>
+        <OptionKey>CHADAB1OP1</OptionKey>
+        <DieModifiers>
+          <DieModifier>
+            <SkillKey>PERC</SkillKey>
+            <SetbackCount>2</SetbackCount>
+          </DieModifier>
+        </DieModifiers>
+      </CharOption>
+      <CharOption>
+        <ChoiceKey>CHADAB2</ChoiceKey>
+        <OptionKey>CHADAB1SIZ</OptionKey>
+      </CharOption>
+    </SelectedOptions>
+  </Species>
+  <Career>
+    <CareerKey>TECHNICIAN</CareerKey>
+    <StartingSpecKey>OUTLAW</StartingSpecKey>
+    <CareerSkills>
+      <Key>COMP</Key>
+      <Key>COORD</Key>
+      <Key>MECH</Key>
+      <Key>PERC</Key>
+    </CareerSkills>
+    <CareerSpecSkills>
+      <Key>SW</Key>
+      <Key>UND</Key>
+    </CareerSpecSkills>
+  </Career>
+  <Class>
+    <ClassKey>LOW</ClassKey>
+  </Class>
+  <Hook>
+    <HookKey>OPP</HookKey>
+  </Hook>
+  <Attitude>
+    <AttitudeKey>ANCIENTRELIGION</AttitudeKey>
+  </Attitude>
+  <Weapons>
+    <CharWeapon>
+      <ItemKey>M53QUICKTRIGGER</ItemKey>
+      <Key>487e1478-6ff2-45ff-89af-4f833b57c37c</Key>
+      <Count>1</Count>
+      <AddlHP>1</AddlHP>
+      <Shown>true</Shown>
+    </CharWeapon>
+    <CharWeapon>
+      <ItemKey />
+      <Key>a83808a5-afe3-4f9a-9cb1-854b1e342f1f</Key>
+      <Count>1</Count>
+      <PurchasedAttachments>
+        <CharItemAttachment>
+          <AllMods>
+            <Mod>
+              <Key>USERANGLT</Key>
+              <Count>1</Count>
+              <ID>9a98559d-88f3-4b85-b530-a6b25189ec50</ID>
+            </Mod>
+            <Mod>
+              <Count>1</Count>
+              <MiscDesc>Add [SETBACK] to any combat check made when firing one-handed.</MiscDesc>
+              <ID>489238e3-a1c9-4e23-9501-25d9b33ea30d</ID>
+            </Mod>
+            <Mod>
+              <Key>RANGEREDMED</Key>
+              <Count>1</Count>
+              <ID>b195cf0b-b9d0-4f2a-813f-8d1deb92da6c</ID>
+            </Mod>
+          </AllMods>
+          <AttachKey>PISTOLGRIP</AttachKey>
+          <BaseMods>
+            <ItemDescInfo>
+              <Key>USERANGLT</Key>
+              <Count>1</Count>
+              <ID>9a98559d-88f3-4b85-b530-a6b25189ec50</ID>
+            </ItemDescInfo>
+            <ItemDescInfo>
+              <Count>1</Count>
+              <MiscDesc>Add [SETBACK] to any combat check made when firing one-handed.</MiscDesc>
+              <ID>489238e3-a1c9-4e23-9501-25d9b33ea30d</ID>
+            </ItemDescInfo>
+            <ItemDescInfo>
+              <Key>RANGEREDMED</Key>
+              <Count>1</Count>
+              <ID>b195cf0b-b9d0-4f2a-813f-8d1deb92da6c</ID>
+            </ItemDescInfo>
+          </BaseMods>
+        </CharItemAttachment>
+      </PurchasedAttachments>
+      <CustomWeap>
+        <Name>Boom Stick</Name>
+        <Description>[H3]Boom Stick[h3]
+      This blaster uses the galven receiver of an old blaster rifle, stripped down to a size Joller can use. It kicks hard, and hits even harder.</Description>
+        <Type>Energy Weapon</Type>
+        <Categories>
+          <Category>Rifle</Category>
+          <Category>Blaster Rifle</Category>
+          <Category>Blaster</Category>
+          <Category>Ranged</Category>
+        </Categories>
+        <Encumbrance>2</Encumbrance>
+        <HP>4</HP>
+        <Price>562</Price>
+        <Rarity>4</Rarity>
+        <SkillKey>RANGHVY</SkillKey>
+        <Damage>10</Damage>
+        <Crit>3</Crit>
+        <RangeValue>wrLong</RangeValue>
+        <Qualities>
+          <Quality>
+            <Key>KNOCKDOWN</Key>
+          </Quality>
+        </Qualities>
+        <Range>Long</Range>
+      </CustomWeap>
+    </CharWeapon>
+    <CharWeapon>
+      <ItemKey />
+      <Key>eac25aed-21c8-4b34-b92a-2780481d6365</Key>
+      <Held>true</Held>
+      <Count>1</Count>
+      <Shown>true</Shown>
+      <CustomWeap>
+        <Name>Bolt Blocka</Name>
+        <Description>[H3]Shield[h3]
+      This is a shield template.  Examples include bucklers and riot shields.  Please enter the description of the finished shield here.</Description>
+        <Type>Melee</Type>
+        <Categories>
+          <Category>Shield</Category>
+        </Categories>
+        <Encumbrance>1</Encumbrance>
+        <HP>4</HP>
+        <Price>14</Price>
+        <SkillKey>MELEE</SkillKey>
+        <Crit>5</Crit>
+        <RangeValue>wrEngaged</RangeValue>
+        <Hands>whOneHanded</Hands>
+        <Qualities>
+          <Quality>
+            <Key>DEFENSIVE</Key>
+            <Count>1</Count>
+          </Quality>
+          <Quality>
+            <Key>DEFENSIVE</Key>
+            <Count>1</Count>
+          </Quality>
+          <Quality>
+            <Key>DEFLECTION</Key>
+            <Count>2</Count>
+          </Quality>
+        </Qualities>
+        <Range>Engaged</Range>
+      </CustomWeap>
+    </CharWeapon>
+    <CharWeapon>
+      <ItemKey />
+      <Key>4623eeda-dc29-47c4-9b1d-8bdd3a9c42cd</Key>
+      <Count>1</Count>
+      <CustomWeap>
+        <Name>Energy Rifle</Name>
+        <Description>[H3]Energy Rifle[h3]
+      This is a ranged weapon template.  Examples include blaster rifles.  Please enter the description of the finished weapon here.</Description>
+        <Type>Energy Weapon</Type>
+        <Categories>
+          <Category>Rifle</Category>
+          <Category>Blaster Rifle</Category>
+          <Category>Blaster</Category>
+          <Category>Ranged</Category>
+        </Categories>
+        <Encumbrance>4</Encumbrance>
+        <HP>4</HP>
+        <Price>495</Price>
+        <Rarity>4</Rarity>
+        <SkillKey>RANGHVY</SkillKey>
+        <Damage>9</Damage>
+        <Crit>3</Crit>
+        <RangeValue>wrLong</RangeValue>
+        <Range>Long</Range>
+      </CustomWeap>
+    </CharWeapon>
+    <CharWeapon>
+      <ItemKey />
+      <Key>e2762e9f-65cc-4c70-bf36-22cd0584beee</Key>
+      <Count>1</Count>
+      <CustomWeap>
+        <Name>Energy Rifle</Name>
+        <Description>[H3]Energy Rifle[h3]
+      This is a ranged weapon template.  Examples include blaster rifles.  Please enter the description of the finished weapon here.</Description>
+        <Type>Energy Weapon</Type>
+        <Categories>
+          <Category>Rifle</Category>
+          <Category>Blaster Rifle</Category>
+          <Category>Blaster</Category>
+          <Category>Ranged</Category>
+        </Categories>
+        <Encumbrance>4</Encumbrance>
+        <HP>4</HP>
+        <Price>495</Price>
+        <Rarity>4</Rarity>
+        <SkillKey>RANGHVY</SkillKey>
+        <Damage>9</Damage>
+        <Crit>3</Crit>
+        <RangeValue>wrLong</RangeValue>
+        <Range>Long</Range>
+      </CustomWeap>
+    </CharWeapon>
+    <CharWeapon>
+      <ItemKey />
+      <Key>9c8703c6-2c31-42f1-b1ce-da46d8bfef64</Key>
+      <Count>1</Count>
+      <CustomWeap>
+        <Name>Energy Pistol</Name>
+        <Description>[H3]Energy Pistol[h3]
+      This is a ranged weapon template.  Examples include blaster pistols.  Please enter the description of the finished weapon here.</Description>
+        <Type>Energy Weapon</Type>
+        <Categories>
+          <Category>Blaster Pistol</Category>
+          <Category>Blaster</Category>
+          <Category>Pistol</Category>
+          <Category>Ranged</Category>
+        </Categories>
+        <Encumbrance>1</Encumbrance>
+        <HP>3</HP>
+        <Price>220</Price>
+        <Rarity>3</Rarity>
+        <SkillKey>RANGLT</SkillKey>
+        <Damage>6</Damage>
+        <Crit>3</Crit>
+        <RangeValue>wrMedium</RangeValue>
+        <Range>Medium</Range>
+      </CustomWeap>
+    </CharWeapon>
+    <CharWeapon>
+      <ItemKey />
+      <Key>8fc81db7-405a-428d-9f02-70324a1c9597</Key>
+      <Equipped>true</Equipped>
+      <Held>true</Held>
+      <Count>1</Count>
+      <Shown>true</Shown>
+      <CustomWeap>
+        <Name>Pinpoint</Name>
+        <Description>[H3]Energy Pistol[h3]
+      This is a ranged weapon template.  Examples include blaster pistols.  Please enter the description of the finished weapon here.</Description>
+        <Type>Energy Weapon</Type>
+        <Categories>
+          <Category>Blaster Pistol</Category>
+          <Category>Blaster</Category>
+          <Category>Pistol</Category>
+          <Category>Ranged</Category>
+        </Categories>
+        <Encumbrance>1</Encumbrance>
+        <HP>3</HP>
+        <Price>350</Price>
+        <Rarity>3</Rarity>
+        <SkillKey>RANGLT</SkillKey>
+        <Damage>7</Damage>
+        <Crit>3</Crit>
+        <RangeValue>wrMedium</RangeValue>
+        <Qualities>
+          <Quality>
+            <Key>ACCURATE</Key>
+            <Count>3</Count>
+          </Quality>
+        </Qualities>
+        <Range>Medium</Range>
+      </CustomWeap>
+    </CharWeapon>
+    <CharWeapon>
+      <ItemKey />
+      <Key>UNARMED</Key>
+      <Count>1</Count>
+      <Innate>true</Innate>
+    </CharWeapon>
+  </Weapons>
+  <Armor>
+    <CharArmor>
+      <ItemKey />
+      <Key>a56330e5-1a7c-4b46-a036-a97e2230846f</Key>
+      <Count>1</Count>
+      <CustomArmor>
+        <Name>Heavy Greatcoat</Name>
+        <Description>[H3]Reinforced Clothing[h3]
+      This is an armor template.  Please enter the description of the finished armor here.</Description>
+        <Categories>
+          <Category>Half Body</Category>
+        </Categories>
+        <Encumbrance>1</Encumbrance>
+        <Price>30</Price>
+        <Soak>2</Soak>
+      </CustomArmor>
+    </CharArmor>
+    <CharArmor>
+      <ItemKey />
+      <Key>220574bc-8c47-4e46-a202-bc35fd3dee75</Key>
+      <Equipped>true</Equipped>
+      <Held>true</Held>
+      <Count>1</Count>
+      <CustomArmor>
+        <Name>Reinforced Clothing</Name>
+        <Description>[H3]Reinforced Clothing[h3]
+      This is an armor template.  Please enter the description of the finished armor here.</Description>
+        <Categories>
+          <Category>Half Body</Category>
+        </Categories>
+        <Encumbrance>1</Encumbrance>
+        <Price>36</Price>
+        <Defense>1</Defense>
+        <Soak>2</Soak>
+      </CustomArmor>
+    </CharArmor>
+    <CharArmor>
+      <ItemKey />
+      <Key>765e0368-2f45-45f7-8324-f476e4801319</Key>
+      <Count>1</Count>
+      <CustomArmor>
+        <Name>Reinforced Clothing</Name>
+        <Description>[H3]Reinforced Clothing[h3]
+      This is an armor template.  Please enter the description of the finished armor here.</Description>
+        <Categories>
+          <Category>Half Body</Category>
+        </Categories>
+        <Encumbrance>1</Encumbrance>
+        <Price>28</Price>
+        <Soak>1</Soak>
+      </CustomArmor>
+    </CharArmor>
+    <CharArmor>
+      <ItemKey />
+      <Key>6c457555-dd4c-415a-919a-d12a4f02ca04</Key>
+      <Count>1</Count>
+      <CustomArmor>
+        <Name>Deflective Armor</Name>
+        <Description>[H3]Deflective Armor[h3]
+      This is an armor template.  Please enter the description of the finished armor here.</Description>
+        <Categories>
+          <Category>Half Body</Category>
+          <Category>Resistant</Category>
+        </Categories>
+        <Encumbrance>2</Encumbrance>
+        <HP>1</HP>
+        <Price>550</Price>
+        <Rarity>5</Rarity>
+        <Defense>1</Defense>
+        <Soak>1</Soak>
+      </CustomArmor>
+    </CharArmor>
+    <CharArmor>
+      <ItemKey />
+      <Key>8d04dc37-9e7f-449c-886b-de18e8a56403</Key>
+      <Count>1</Count>
+      <CustomArmor>
+        <Name>Deflective Armor</Name>
+        <Description>[H3]Deflective Armor[h3]
+      This is an armor template.  Please enter the description of the finished armor here.</Description>
+        <Categories>
+          <Category>Half Body</Category>
+          <Category>Resistant</Category>
+        </Categories>
+        <Encumbrance>2</Encumbrance>
+        <HP>1</HP>
+        <Price>550</Price>
+        <Rarity>5</Rarity>
+        <Defense>1</Defense>
+        <Soak>1</Soak>
+      </CustomArmor>
+    </CharArmor>
+  </Armor>
+  <Gear>
+    <CharGear>
+      <ItemKey>MEDPAC</ItemKey>
+      <Key>fc2a0067-604a-4f97-8c1b-16dc51c04289</Key>
+      <Held>true</Held>
+      <Count>1</Count>
+    </CharGear>
+    <CharGear>
+      <ItemKey />
+      <Key>fbc0190f-f050-4ec1-9019-7b98d23079ba</Key>
+      <Count>1</Count>
+      <CustomGear>
+        <Name>"Safe" Tools</Name>
+        <Description>[H3]Simple Tool[h3]
+      This is a gadget template.  Examples include climbing gear, datapads, handscanners, medpacks, toolkits, and slicer gear.  Please enter the description of the finished gadget here.</Description>
+        <Type>Tools/Electronics</Type>
+        <Categories />
+        <Encumbrance>2</Encumbrance>
+        <Price>70</Price>
+        <Rarity>1</Rarity>
+        <BaseMods>
+          <Mod>
+            <MiscDesc>This tool is the right tool for the job when making Mechanics checks.</MiscDesc>
+          </Mod>
+          <Mod>
+            <MiscDesc>[B]Safety Features[b]: Add automatic [AD] to Mechanics checks made by this weapon</MiscDesc>
+            <DieModifiers>
+              <DieModifier>
+                <SkillKey>MECH</SkillKey>
+                <AdvantageCount>1</AdvantageCount>
+              </DieModifier>
+            </DieModifiers>
+          </Mod>
+        </BaseMods>
+        <AdvImportPath />
+      </CustomGear>
+    </CharGear>
+    <CharGear>
+      <ItemKey>BACKPACK</ItemKey>
+      <Key>f6d47294-e7cd-41cb-8b6c-58d4ab096335</Key>
+      <Equipped>true</Equipped>
+      <Held>true</Held>
+      <Count>1</Count>
+    </CharGear>
+    <CharGear>
+      <ItemKey />
+      <Key>9eeeec15-483e-4c84-8c02-130fe38c4d47</Key>
+      <Held>true</Held>
+      <Count>1</Count>
+      <CustomGear>
+        <Name>Slicer's Pad</Name>
+        <Description>[H3]Slicer's Pad[h3]
+      This is a gadget template.  Examples include climbing gear, datapads, handscanners, medpacks, toolkits, and slicer gear.  Please enter the description of the finished gadget here.</Description>
+        <Type>Tools/Electronics</Type>
+        <Categories />
+        <Encumbrance>1</Encumbrance>
+        <Price>70</Price>
+        <Rarity>1</Rarity>
+        <BaseMods>
+          <Mod>
+            <MiscDesc>This tool is the right tool for the job when making Computers checks.</MiscDesc>
+          </Mod>
+          <Mod>
+            <MiscDesc>[B]Safety Features[b]: Add automatic [AD] to Computers checks made by this weapon</MiscDesc>
+            <DieModifiers>
+              <DieModifier>
+                <SkillKey>COMP</SkillKey>
+                <AdvantageCount>1</AdvantageCount>
+              </DieModifier>
+            </DieModifiers>
+          </Mod>
+        </BaseMods>
+        <AdvImportPath />
+      </CustomGear>
+    </CharGear>
+    <CharGear>
+      <ItemKey />
+      <Key>8566fe47-0cc1-46d7-9770-f730b0ea84d4</Key>
+      <Held>true</Held>
+      <Count>1</Count>
+      <CustomGear>
+        <Name>Simple Tool</Name>
+        <Description>[H3]Simple Tool[h3]
+      This is a gadget template.  Examples include climbing gear, datapads, handscanners, medpacks, toolkits, and slicer gear.  Please enter the description of the finished gadget here.</Description>
+        <Type>Tools/Electronics</Type>
+        <Categories />
+        <Encumbrance>1</Encumbrance>
+        <Price>75</Price>
+        <Rarity>1</Rarity>
+        <BaseMods>
+          <Mod>
+            <MiscDesc>This tool is the right tool for the job when making Mechanics checks.</MiscDesc>
+          </Mod>
+          <Mod>
+            <MiscDesc>[B]Compact[b]: Add [SE] to checks to find this item on the wearer's person</MiscDesc>
+          </Mod>
+          <Mod>
+            <MiscDesc>[B]Safety Features[b]: Add automatic [AD] to Mechanics checks made by this weapon</MiscDesc>
+            <DieModifiers>
+              <DieModifier>
+                <SkillKey>MECH</SkillKey>
+                <AdvantageCount>1</AdvantageCount>
+              </DieModifier>
+            </DieModifiers>
+          </Mod>
+        </BaseMods>
+        <AdvImportPath />
+      </CustomGear>
+    </CharGear>
+  </Gear>
+  <Vehicles />
+  <NPCs />
+  <SummaryPriorities />
+  <Story />
+  <Credits>0</Credits>
+  <Morality>
+    <MoralityValue>50</MoralityValue>
+  </Morality>
+  <Grants>
+    <UseGrants>false</UseGrants>
+  </Grants>
+  <Rigger>
+    <VehicleKey />
+    <WeaponIndex>-1</WeaponIndex>
+    <custRigger />
+    <MaxSilhouette>0</MaxSilhouette>
+  </Rigger>
+  <Schematics>
+    <CharSchematic>
+      <TemplateKey>GADGETTOOLSIMP</TemplateKey>
+      <Level>0</Level>
+      <refTemplate>
+        <Key>GADGETTOOLSIMP</Key>
+        <Name>Simple Tool</Name>
+        <Description>
+      [H3]Simple Tool[h3]
+      This is a gadget template.  Examples include climbing gear, datapads, handscanners, medpacks, toolkits, and slicer gear.  Please enter the description of the finished gadget here.
+    </Description>
+        <Source Page="84">Special Modifications</Source>
+        <TempType>ctGadget</TempType>
+        <MaterialCost>50</MaterialCost>
+        <MaterialRarity>1</MaterialRarity>
+        <TimeHours>2</TimeHours>
+        <CheckSkills>
+          <Key>MECH</Key>
+        </CheckSkills>
+        <CheckDifficulty>
+          <Difficulty>1</Difficulty>
+        </CheckDifficulty>
+        <TemplateSkill>
+          <TypeValue>stGeneral</TypeValue>
+          <SkillCount>1</SkillCount>
+          <Type>General</Type>
+        </TemplateSkill>
+        <TemplateSkillRightTool>true</TemplateSkillRightTool>
+        <GearProfile>
+          <Type>Tools/Electronics</Type>
+          <Categories />
+          <Encumbrance>4</Encumbrance>
+          <Rarity>-1</Rarity>
+          <BaseMods>
+            <Mod>
+              <MiscDesc>This tool is the right tool for the job when making {0} checks.</MiscDesc>
+            </Mod>
+          </BaseMods>
+        </GearProfile>
+      </refTemplate>
+    </CharSchematic>
+    <CharSchematic>
+      <TemplateKey>ARMORREINF</TemplateKey>
+      <Level>0</Level>
+      <refTemplate>
+        <Key>ARMORREINF</Key>
+        <Name>Reinforced Clothing</Name>
+        <Description>
+      [H3]Reinforced Clothing[h3]
+      This is an armor template.  Please enter the description of the finished armor here.
+    </Description>
+        <Source Page="90">Keeping the Peace</Source>
+        <TempType>ctArmor</TempType>
+        <MaterialCost>25</MaterialCost>
+        <MaterialRarity>0</MaterialRarity>
+        <TimeHours>6</TimeHours>
+        <CheckSkills>
+          <Key>MECH</Key>
+          <Key>SURV</Key>
+        </CheckSkills>
+        <CheckDifficulty>
+          <Difficulty>2</Difficulty>
+          <Difficulty>2</Difficulty>
+        </CheckDifficulty>
+        <ArmorProfile>
+          <Name>Reinforced Clothing</Name>
+          <Categories>
+            <Category>Half Body</Category>
+          </Categories>
+          <Encumbrance>1</Encumbrance>
+          <Rarity>-1</Rarity>
+          <Soak>1</Soak>
+        </ArmorProfile>
+      </refTemplate>
+    </CharSchematic>
+    <CharSchematic>
+      <TemplateKey>ARMORCOMBAT</TemplateKey>
+      <Level>0</Level>
+      <refTemplate>
+        <Key>ARMORCOMBAT</Key>
+        <Name>Combat Armor</Name>
+        <Description>
+      [H3]Combat Armor[h3]
+      This is an armor template.  Please enter the description of the finished armor here.
+    </Description>
+        <Source Page="90">Keeping the Peace</Source>
+        <TempType>ctArmor</TempType>
+        <MaterialCost>1250</MaterialCost>
+        <MaterialRarity>4</MaterialRarity>
+        <TimeHours>48</TimeHours>
+        <CheckSkills>
+          <Key>MECH</Key>
+        </CheckSkills>
+        <CheckDifficulty>
+          <Difficulty>3</Difficulty>
+        </CheckDifficulty>
+        <ArmorProfile>
+          <Categories>
+            <Category>Sealable</Category>
+            <Category>Full Body</Category>
+            <Category>Hard Full Body</Category>
+            <Category>Hard</Category>
+            <Category>Heavy</Category>
+            <Category>Resistant</Category>
+          </Categories>
+          <Encumbrance>4</Encumbrance>
+          <HP>3</HP>
+          <Rarity>-1</Rarity>
+          <Soak>2</Soak>
+        </ArmorProfile>
+      </refTemplate>
+    </CharSchematic>
+    <CharSchematic>
+      <TemplateKey>RANGEDENERPIST</TemplateKey>
+      <Level>1</Level>
+      <refTemplate>
+        <Key>RANGEDENERPIST</Key>
+        <Name>Energy Pistol</Name>
+        <Description>
+      [H3]Energy Pistol[h3]
+      This is a ranged weapon template.  Examples include blaster pistols.  Please enter the description of the finished weapon here.
+    </Description>
+        <Source Page="78">Special Modifications</Source>
+        <TempType>ctRanged</TempType>
+        <MaterialCost>200</MaterialCost>
+        <MaterialRarity>3</MaterialRarity>
+        <TimeHours>12</TimeHours>
+        <CheckSkills>
+          <Key>MECH</Key>
+        </CheckSkills>
+        <CheckDifficulty>
+          <Difficulty>3</Difficulty>
+        </CheckDifficulty>
+        <WeaponProfile>
+          <Type>Energy Weapon</Type>
+          <Categories>
+            <Category>Blaster Pistol</Category>
+            <Category>Blaster</Category>
+            <Category>Pistol</Category>
+            <Category>Ranged</Category>
+          </Categories>
+          <Encumbrance>1</Encumbrance>
+          <HP>3</HP>
+          <Rarity>-1</Rarity>
+          <SkillKey>RANGLT</SkillKey>
+          <Damage>6</Damage>
+          <Crit>3</Crit>
+          <RangeValue>wrMedium</RangeValue>
+          <Range>Medium</Range>
+        </WeaponProfile>
+      </refTemplate>
+    </CharSchematic>
+    <CharSchematic>
+      <TemplateKey>RANGEDSOLIDPIST</TemplateKey>
+      <Level>0</Level>
+      <refTemplate>
+        <Key>RANGEDSOLIDPIST</Key>
+        <Name>Solid Projectile Pistol</Name>
+        <Description>
+      [H3]Solid Projectile Pistol[h3]
+      This is a ranged weapon template.  Examples include slugthrower pistols and flechette pistols.  Please enter the description of the finished weapon here.
+    </Description>
+        <Source Page="78">Special Modifications</Source>
+        <TempType>ctRanged</TempType>
+        <MaterialCost>50</MaterialCost>
+        <MaterialRarity>2</MaterialRarity>
+        <TimeHours>8</TimeHours>
+        <CheckSkills>
+          <Key>MECH</Key>
+        </CheckSkills>
+        <CheckDifficulty>
+          <Difficulty>2</Difficulty>
+        </CheckDifficulty>
+        <WeaponProfile>
+          <Type>Slugthrower</Type>
+          <Categories>
+            <Category>Pistol</Category>
+            <Category>Ranged</Category>
+          </Categories>
+          <Encumbrance>1</Encumbrance>
+          <Price>100</Price>
+          <Rarity>-1</Rarity>
+          <SkillKey>RANGLT</SkillKey>
+          <Damage>4</Damage>
+          <Crit>5</Crit>
+          <RangeValue>wrShort</RangeValue>
+          <Range>Short</Range>
+        </WeaponProfile>
+      </refTemplate>
+    </CharSchematic>
+    <CharSchematic>
+      <TemplateKey>RANGEDENERRIF</TemplateKey>
+      <Level>1</Level>
+      <refTemplate>
+        <Key>RANGEDENERRIF</Key>
+        <Name>Energy Rifle</Name>
+        <Description>
+      [H3]Energy Rifle[h3]
+      This is a ranged weapon template.  Examples include blaster rifles.  Please enter the description of the finished weapon here.
+    </Description>
+        <Source Page="78">Special Modifications</Source>
+        <TempType>ctRanged</TempType>
+        <MaterialCost>450</MaterialCost>
+        <MaterialRarity>4</MaterialRarity>
+        <TimeHours>16</TimeHours>
+        <CheckSkills>
+          <Key>MECH</Key>
+        </CheckSkills>
+        <CheckDifficulty>
+          <Difficulty>3</Difficulty>
+        </CheckDifficulty>
+        <WeaponProfile>
+          <Type>Energy Weapon</Type>
+          <Categories>
+            <Category>Rifle</Category>
+            <Category>Blaster Rifle</Category>
+            <Category>Blaster</Category>
+            <Category>Ranged</Category>
+          </Categories>
+          <Encumbrance>4</Encumbrance>
+          <HP>4</HP>
+          <Rarity>-1</Rarity>
+          <SkillKey>RANGHVY</SkillKey>
+          <Damage>9</Damage>
+          <Crit>3</Crit>
+          <RangeValue>wrLong</RangeValue>
+          <Range>Long</Range>
+        </WeaponProfile>
+      </refTemplate>
+    </CharSchematic>
+    <CharSchematic>
+      <TemplateKey>MELEESHIELD</TemplateKey>
+      <Level>0</Level>
+      <refTemplate>
+        <Key>MELEESHIELD</Key>
+        <Name>Shield</Name>
+        <Description>
+      [H3]Shield[h3]
+      This is a shield template.  Examples include bucklers and riot shields.  Please enter the description of the finished shield here.
+    </Description>
+        <Source Page="76">Special Modifications</Source>
+        <TempType>ctMeleeBrawl</TempType>
+        <MaterialCost>10</MaterialCost>
+        <MaterialRarity>0</MaterialRarity>
+        <TimeHours>8</TimeHours>
+        <CheckSkills>
+          <Key>MECH</Key>
+          <Key>SURV</Key>
+        </CheckSkills>
+        <CheckDifficulty>
+          <Difficulty>2</Difficulty>
+          <Difficulty>2</Difficulty>
+        </CheckDifficulty>
+        <WeaponProfile>
+          <Type>Melee</Type>
+          <Categories>
+            <Category>Shield</Category>
+            <Category>Bludgeoning Melee</Category>
+          </Categories>
+          <Encumbrance>1</Encumbrance>
+          <HP>4</HP>
+          <Rarity>-1</Rarity>
+          <SkillKey>MELEE</SkillKey>
+          <Crit>5</Crit>
+          <RangeValue>wrEngaged</RangeValue>
+          <Hands>whOneHanded</Hands>
+          <Qualities>
+            <Quality>
+              <Key>DEFENSIVE</Key>
+              <Count>1</Count>
+            </Quality>
+          </Qualities>
+          <Range>Engaged</Range>
+        </WeaponProfile>
+      </refTemplate>
+    </CharSchematic>
+    <CharSchematic>
+      <TemplateKey>CYBERIMP</TemplateKey>
+      <Level>0</Level>
+      <refTemplate>
+        <Key>CYBERIMP</Key>
+        <Name>Cybernetic Implant</Name>
+        <Description>
+      [H3]Cybernetic Implant[h3]
+      This is a cybernetic template.  Examples include brain implants and enhanced senses.  Please enter the description of the finished cybernetic here.
+    </Description>
+        <Source Page="85">Special Modifications</Source>
+        <TempType>ctCyber</TempType>
+        <MaterialCost>1500</MaterialCost>
+        <MaterialRarity>6</MaterialRarity>
+        <TimeHours>48</TimeHours>
+        <CheckSkills>
+          <Key>MECH</Key>
+        </CheckSkills>
+        <CheckDifficulty>
+          <Difficulty>4</Difficulty>
+        </CheckDifficulty>
+        <TemplateSkill>
+          <TypeValue>stGeneral</TypeValue>
+          <SkillCount>1</SkillCount>
+          <Type>General</Type>
+        </TemplateSkill>
+        <TemplateSkillRank>1</TemplateSkillRank>
+        <GearProfile>
+          <Type>Cybernetics</Type>
+          <Categories />
+          <Rarity>-1</Rarity>
+        </GearProfile>
+      </refTemplate>
+    </CharSchematic>
+    <CharSchematic>
+      <TemplateKey>RANGEDSOLIDRIF</TemplateKey>
+      <Level>3</Level>
+      <refTemplate>
+        <Key>RANGEDSOLIDRIF</Key>
+        <Name>Solid Projectile Rifle</Name>
+        <Description>
+      [H3]Solid Projectile Rifle[h3]
+      This is a ranged weapon template.  Examples include slugthrower rifles and rail guns.  Please enter the description of the finished weapon here.
+    </Description>
+        <Source Page="78">Special Modifications</Source>
+        <TempType>ctRanged</TempType>
+        <MaterialCost>125</MaterialCost>
+        <MaterialRarity>2</MaterialRarity>
+        <TimeHours>8</TimeHours>
+        <CheckSkills>
+          <Key>MECH</Key>
+        </CheckSkills>
+        <CheckDifficulty>
+          <Difficulty>3</Difficulty>
+        </CheckDifficulty>
+        <WeaponProfile>
+          <Type>Slugthrower</Type>
+          <Categories>
+            <Category>Rifle</Category>
+            <Category>Ranged</Category>
+          </Categories>
+          <Encumbrance>5</Encumbrance>
+          <HP>1</HP>
+          <Rarity>-1</Rarity>
+          <SkillKey>RANGHVY</SkillKey>
+          <Damage>7</Damage>
+          <Crit>5</Crit>
+          <RangeValue>wrMedium</RangeValue>
+          <Qualities>
+            <Quality>
+              <Key>CUMBERSOME</Key>
+              <Count>2</Count>
+            </Quality>
+          </Qualities>
+          <Range>Medium</Range>
+        </WeaponProfile>
+      </refTemplate>
+    </CharSchematic>
+    <CharSchematic>
+      <TemplateKey>ARMORDEFL</TemplateKey>
+      <Level>0</Level>
+      <refTemplate>
+        <Key>ARMORDEFL</Key>
+        <Name>Deflective Armor</Name>
+        <Description>
+      [H3]Deflective Armor[h3]
+      This is an armor template.  Please enter the description of the finished armor here.
+    </Description>
+        <Source Page="90">Keeping the Peace</Source>
+        <TempType>ctArmor</TempType>
+        <MaterialCost>500</MaterialCost>
+        <MaterialRarity>5</MaterialRarity>
+        <TimeHours>24</TimeHours>
+        <CheckSkills>
+          <Key>MECH</Key>
+        </CheckSkills>
+        <CheckDifficulty>
+          <Difficulty>2</Difficulty>
+        </CheckDifficulty>
+        <ArmorProfile>
+          <Categories>
+            <Category>Half Body</Category>
+            <Category>Resistant</Category>
+          </Categories>
+          <Encumbrance>2</Encumbrance>
+          <HP>1</HP>
+          <Rarity>-1</Rarity>
+          <Defense>1</Defense>
+          <Soak>1</Soak>
+        </ArmorProfile>
+      </refTemplate>
+    </CharSchematic>
+  </Schematics>
+  <UseGrants>false</UseGrants>
+  <Portrait></Portrait>
+  <AutoRecalc>true</AutoRecalc>
+</Character>
