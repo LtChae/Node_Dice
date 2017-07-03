@@ -107,27 +107,15 @@ bot.on("message", function(user, userID, channelID, message, event) {
     if (user === "SWRPG_Dice" || user === "SWRPG_Dice_Beta"){
         return;
     }
-    if (process.env.maintenance === "true"){
-        console.log("Ignoring message, in maintenance mode.");
-        return;
-    }
     bot.setPresence( {game:"!Roll Help"} );
 
     console.log(user + " - " + userID);
-    //    console.log("in " + channelID);
     console.log(message);
     console.log("----------");
     console.log("Server ID" + bot.channels[channelID].guild_id); //Woot! Thanks Discord.io discord!
     var serverID = bot.channels[channelID].guild_id;
     if(!(serverID in serverDice)) {
         setupServer(serverID);
-    }
-
-    if (message === "ping") {
-        sendMessages(channelID, [String.raw`\\:AbilBla:`]); //Sending a message with our helper function
-    }
-    if (message === "pong") {
-        sendMessages(channelID, [String.raw`\\:AbilBla:`]); //Sending a message with our helper function
     }
 
     if (message === "!ClearAll") {
@@ -220,23 +208,25 @@ bot.on("message", function(user, userID, channelID, message, event) {
     }
 
     if (message.match(destinyAddMatch)) {
-        if (!channelDestiny[channelID]){
-            let pool = new DestinyPool(channelID, []);
-            channelDestiny[channelID] = pool;
-        }
+        
+        let destinyPool = new DestinyPool(channelID, []);
 
-        var returnMessage = "";
-        var pool = channelDestiny[channelID].pool;
+        destinyPool.getPool().then(function(pool){
+            var match = destinyAddMatch.exec(message);
+            var symbols = [];
+            symbols.push(match[1]);
+            returnMessage += "Adding " + printSymbols(symbols, serverID) + " to the destiny pool.";
 
-        var match = destinyAddMatch.exec(message);
+            pool = pool.concat(symbols);
 
-        returnMessage += "Adding " + printSymbols([match[1]], serverID) + " to the destiny pool."
-        channelDestiny[channelID].push(match[1])
-
-        channelDestiny[channelID].pool = pool;
-
-        var poolMessage = "Current destiny pool: " + printSymbols(pool, serverID);
-        sendMessages(channelID, [returnMessage + "\n" + poolMessage]);
+            destinyPool.setPool(pool).then(function(result){
+                var returnMessage =  "Adding " + printSymbols(symbols, serverID) + " to destiny pool";
+                var poolMessage = "Current destiny pool: " + printSymbols(pool, serverID);
+                sendMessages(channelID, [returnMessage, poolMessage]);
+            });            
+        }).catch(function(err){
+            console.log(err);
+        });
     }
 
     if (message.match(destinySetMatch)) {
