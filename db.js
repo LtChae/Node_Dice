@@ -6,8 +6,9 @@ const pg = require('pg');
 // will be read if the config is not present
 var urlMatch = /postgres:\/\/(\w+):(\w+)@(.+):(.+)\/(.+)/;
 var match = urlMatch.exec(process.env.DATABASE_URL);
+console.log(process.env.DATABASE_URL);
 console.log(match[3]);
-
+console.log(match);
 var config = {
     user: match[1], //env var: PGUSER
     database: match[5], //env var: PGDATABASE
@@ -18,7 +19,7 @@ var config = {
     ssl: true
     //idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
 };
-
+console.log(config);
 //this initializes a connection pool
 //it will keep idle connections open for 30 seconds
 //and set a limit of maximum 10 idle clients

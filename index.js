@@ -4,6 +4,7 @@ var http = require('http');
 var finalhandler = require('finalhandler');
 var serveStatic = require('serve-static');
 const DestinyPool = require('./destinyPool.js');
+const HomeServer = process.env.home_server;
 
 
 var serve = serveStatic('public', {'index': ['index.html', 'index.htm']})
@@ -112,10 +113,25 @@ bot.on("message", function(user, userID, channelID, message, event) {
     console.log(user + " - " + userID);
     console.log(message);
     console.log("----------");
-    console.log("Server ID" + bot.channels[channelID].guild_id); //Woot! Thanks Discord.io discord!
+    console.log("Server ID " + bot.channels[channelID].guild_id); //Woot! Thanks Discord.io discord!
+    
     var serverID = bot.channels[channelID].guild_id;
-    if(!(serverID in serverDice)) {
-        setupServer(serverID);
+    var emojiServerID = serverID;
+
+    if (hasPermission(0x00040000, serverID)) {
+        console.log('Can use External Emoji. Using Home Server: ' + HomeServer);
+        emojiServerID = HomeServer;
+    }
+
+    if(!(emojiServerID in serverDice)) {
+        setupServer(emojiServerID);
+    }
+
+    if (message === "!WhereAmI?") {
+        var fs = require('fs');
+        var util = require('util');
+        fs.writeFileSync('./data.json', util.inspect(serverDice[emojiServerID]) , 'utf-8');
+        sendMessages(channelID, ["Server ID: " + bot.channels[channelID].guild_id]);
     }
 
     if (message === "!ClearAll") {
@@ -130,13 +146,13 @@ bot.on("message", function(user, userID, channelID, message, event) {
 
         destinyPool.getPool().then(function(pool){
             var die = "f";
-            var roll = Math.floor(Math.random() * serverDice[serverID][die].length);
-            var rollResult = serverDice[serverID][die][roll];
+            var roll = Math.floor(Math.random() * serverDice[emojiServerID][die].length);
+            var rollResult = serverDice[emojiServerID][die][roll];
             pool = pool.concat(rollResult.results);
 
             destinyPool.setPool(pool).then(function(result){
-                var returnMessage =  "Adding " + printSymbols(rollResult.results, serverID) + " to destiny pool";
-                var poolMessage = "Current destiny pool: " + printSymbols(pool, serverID);
+                var returnMessage =  "Adding " + printSymbols(rollResult.results, emojiServerID) + " to destiny pool";
+                var poolMessage = "Current destiny pool: " + printSymbols(pool, emojiServerID);
                 sendMessages(channelID, [rollResult.code, returnMessage, poolMessage]);
             });            
         });
@@ -156,7 +172,7 @@ bot.on("message", function(user, userID, channelID, message, event) {
                 sendMessages(channelID, ["No Destiny points have been rolled for this channel. Use `!Destiny Roll` to begin."]);
                 return;
             } else {
-                var poolMessage = "Current destiny pool: " + printSymbols(pool, serverID);
+                var poolMessage = "Current destiny pool: " + printSymbols(pool, emojiServerID);
                 sendMessages(channelID, [poolMessage]);
             }                
         });
@@ -201,7 +217,7 @@ bot.on("message", function(user, userID, channelID, message, event) {
             }
 
             destinyPool.setPool(pool).then(function(result){
-                var poolMessage = "Current destiny pool: " + printSymbols(pool, serverID);
+                var poolMessage = "Current destiny pool: " + printSymbols(pool, emojiServerID);
                 sendMessages(channelID, [returnMessage + "\n" + poolMessage]);
             });
         });
@@ -215,13 +231,13 @@ bot.on("message", function(user, userID, channelID, message, event) {
             var match = destinyAddMatch.exec(message);
             var symbols = [];
             symbols.push(match[1]);
-            returnMessage += "Adding " + printSymbols(symbols, serverID) + " to the destiny pool.";
+            returnMessage += "Adding " + printSymbols(symbols, emojiServerID) + " to the destiny pool.";
 
             pool = pool.concat(symbols);
 
             destinyPool.setPool(pool).then(function(result){
-                var returnMessage =  "Adding " + printSymbols(symbols, serverID) + " to destiny pool";
-                var poolMessage = "Current destiny pool: " + printSymbols(pool, serverID);
+                var returnMessage =  "Adding " + printSymbols(symbols, emojiServerID) + " to destiny pool";
+                var poolMessage = "Current destiny pool: " + printSymbols(pool, emojiServerID);
                 sendMessages(channelID, [returnMessage, poolMessage]);
             });            
         }).catch(function(err){
@@ -248,7 +264,7 @@ bot.on("message", function(user, userID, channelID, message, event) {
 
         });
         destinyPool.setPool(pool).then(function(result){
-            var poolMessage = "Destiny Pool set as specified: " + printSymbols(pool, serverID);
+            var poolMessage = "Destiny Pool set as specified: " + printSymbols(pool, emojiServerID);
             sendMessages(channelID, [returnMessage + "\n" + poolMessage]);
         });        
     }
@@ -277,9 +293,9 @@ bot.on("message", function(user, userID, channelID, message, event) {
         var results = [];
         diceToRoll.forEach(function(die) {
             die = die.toLocaleLowerCase();
-            if (serverDice[serverID][die]) {
-                var roll = Math.floor(Math.random() * serverDice[serverID][die].length);
-                results = results.concat(serverDice[serverID][die][roll]);
+            if (serverDice[emojiServerID][die]) {
+                var roll = Math.floor(Math.random() * serverDice[emojiServerID][die].length);
+                results = results.concat(serverDice[emojiServerID][die][roll]);
             }
         });
         var returnMessage = "";
@@ -304,42 +320,46 @@ bot.on("message", function(user, userID, channelID, message, event) {
         var resultsMessage = "";
         if (successScale > 0) {
             for(var i=0; i < successScale; i++){
-                resultsMessage += serverSymbols[serverID].success.code;
+                resultsMessage += serverSymbols[emojiServerID].success.code;
             }	
         } else if (successScale < 0) {
             for(var i=0; i < -successScale; i++){
-                resultsMessage += serverSymbols[serverID].failure.code;
+                resultsMessage += serverSymbols[emojiServerID].failure.code;
             }
         }
 
         if (advantageScale > 0) {
             for(var i=0; i < advantageScale; i++){
-                resultsMessage += serverSymbols[serverID].advantage.code;
+                resultsMessage += serverSymbols[emojiServerID].advantage.code;
             }	
         } else if (advantageScale < 0) {
             for(var i=0; i < -advantageScale; i++){
-                resultsMessage += serverSymbols[serverID].threat.code;
+                resultsMessage += serverSymbols[emojiServerID].threat.code;
             }
         }
 
         for(var i=0; i < despairs; i++){
-            resultsMessage += serverSymbols[serverID].despair.code;
+            resultsMessage += serverSymbols[emojiServerID].despair.code;
         }
         for(var i=0; i < triumphs; i++){
-            resultsMessage += serverSymbols[serverID].triumph.code;
+            resultsMessage += serverSymbols[emojiServerID].triumph.code;
         }
         for(var i=0; i < lightForce; i++){
-            resultsMessage += serverSymbols[serverID].light.code;
+            resultsMessage += serverSymbols[emojiServerID].light.code;
         }
         for(var i=0; i < darkForce; i++){
-            resultsMessage += serverSymbols[serverID].dark.code;
+            resultsMessage += serverSymbols[emojiServerID].dark.code;
         }
 
-        if (resultsMessage === ""){
+        if (resultsMessage == ""){
             resultsMessage = "`All symbols cancelled out or none were rolled.`"
         }
 
-        sendMessages(channelID, [returnMessage, resultsMessage]);
+        if (returnMessage.trim()==='') {
+            resultsMessage = ":warning: No dice images could be displayed. Please ensure that Dice Emoji have been uploaded to the server or that the bot has the `Use External Emojis` permission.";
+        }
+
+        sendMessages(channelID, [returnMessage + '\n\n' + resultsMessage]);
     }
 });
 
@@ -351,10 +371,27 @@ bot.on("disconnect", function() {
 /*Function declaration area*/
 function printSymbols(symbols, serverID) {
     var result = "";
+    console.log("Printing Symbols");
     symbols.forEach(function(symbol){
-        result += serverSymbols[serverID][symbol.toLowerCase()].code
+        if (hasPermission(0x00040000, serverID)) {
+            // result += print(serverSymbols[serverID][symbol.toLowerCase()].face);
+            serverSymbols[HomeServer][symbol.toLowerCase()].code;
+        } else {
+            serverSymbols[serverID][symbol.toLowerCase()].code;
+        }
     });
     return result;
+}
+
+function print(emojiID) {
+    let guild = bot.guilds.get(HomeServer);
+    return guild.emojis.find('name', emojiID).toString();
+}
+
+function hasPermission(permission, serverID) {
+    var roleID = bot.servers[serverID].members[bot.id].roles[0];
+    var role = bot.servers[serverID].roles[roleID];
+    return ((role._permissions & permission) == permission);
 }
 
 function sendMessages(ID, messageArr, interval) {
@@ -365,11 +402,16 @@ function sendMessages(ID, messageArr, interval) {
     function _sendMessages() {
         setTimeout(function() {
             if (messageArr[0]) {
+                var message = messageArr.shift();
                 bot.sendMessage({
                     to: ID,
-                    message: messageArr.shift()
+                    message: message
                 }, function(err, res) {
                     resArr.push(err || res);
+                    if (err != null && err.statusCode == 429) {
+                        console.log("Unable to send message, waiting for: " + err.response.retry_after);
+                        sendMessages(ID, [message], err.response.retry_after);
+                    }
                     if (resArr.length === len) if (typeof(callback) === 'function') callback(resArr);
                 });
                 _sendMessages();
