@@ -373,12 +373,7 @@ function printSymbols(symbols, serverID) {
     var result = "";
     console.log("Printing Symbols");
     symbols.forEach(function(symbol){
-        if (hasPermission(0x00040000, serverID)) {
-            // result += print(serverSymbols[serverID][symbol.toLowerCase()].face);
-            serverSymbols[HomeServer][symbol.toLowerCase()].code;
-        } else {
-            serverSymbols[serverID][symbol.toLowerCase()].code;
-        }
+        serverSymbols[serverID][symbol.toLowerCase()].code;
     });
     return result;
 }
