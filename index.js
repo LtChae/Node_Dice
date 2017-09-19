@@ -373,7 +373,7 @@ function printSymbols(symbols, serverID) {
     var result = "";
     console.log("Printing Symbols");
     symbols.forEach(function(symbol){
-        serverSymbols[serverID][symbol.toLowerCase()].code;
+        result += serverSymbols[serverID][symbol.toLowerCase()].code;
     });
     return result;
 }
