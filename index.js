@@ -363,9 +363,14 @@ bot.on("message", function(user, userID, channelID, message, event) {
     }
 });
 
-bot.on("disconnect", function() {
-    console.log("Bot disconnected");
-    bot.connect() //Auto reconnect
+bot.on("disconnect", function(err, code) {
+    try {
+        console.log("Bot disconnected: " + err + " " + code);
+        bot.connect(); //Auto reconnect
+    } catch (err){
+        console.log(err);
+    }
+    
 });
 
 /*Function declaration area*/
