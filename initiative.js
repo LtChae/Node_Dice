@@ -2,27 +2,32 @@ class Initiative {
     constructor(channelID) {
         this.initiative = [];
         this.currentSlotIndex = 0;
+        this.round = 1;
     }
 
     get npc() {
-        return '\u1F4A2';
+        return ':anger:';
     }
 
     get pc() {
-        return '\u1F464';
+        return ':low_brightness:';
     }
 
     get order(){
         return this.initiative;
     }
 
+    get currentRound(){
+        return this.round;
+    }
+
     get unicodeOrder(){
         var newOrder = '';
         this.initiative.forEach(function(slot, index) {
             var slotSymbol;
-            if (slot.type == 'PC') {
+            if (slot.type.toUpperCase() == 'PC') {
                 slotSymbol = this.pc;
-            } else if (slot.type == 'NPC') {
+            } else if (slot.type.toUpperCase() == 'NPC') {
                 slotSymbol = this.npc;
             } else {
                 slotSymbol = '?';
@@ -40,6 +45,7 @@ class Initiative {
 
     addSlot(type, successes, advantages){
         this.initiative.push({type:type, successes:successes, advantages:advantages});
+        this.sort();
     }
 
     sort(){
@@ -53,12 +59,12 @@ class Initiative {
 
     nextSlot(){
         if (this.currentSlotIndex + 1 >= this.initiative.length) {
+            this.round += 1;
             this.currentSlotIndex = 0;
         } else {
             this.currentSlotIndex += 1;
         }
     }
-
 }
 
 module.exports = Initiative;

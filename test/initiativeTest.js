@@ -13,10 +13,10 @@ describe('Initiative Tracker', function() {
     describe('Get Order', function() {
         it('should display all added slots', function() {
             let initiative = new Initiative();
-            initiative.addSlot('PC', 1, 1);
+            initiative.addSlot('PC', 1, 3);
             initiative.addSlot('NPC', 1, 2);
             initiative.addSlot('PC', 1, 1);
-            assert.deepEqual(initiative.order, [{type: 'PC', successes:1, advantages: 1}, {type: 'NPC', successes:1, advantages: 2}, {type: 'PC', successes:1, advantages: 1}]);
+            assert.deepEqual(initiative.order, [{type: 'PC', successes:1, advantages: 3}, {type: 'NPC', successes:1, advantages: 2}, {type: 'PC', successes:1, advantages: 1}]);
         });
     });
 
@@ -24,8 +24,8 @@ describe('Initiative Tracker', function() {
         it('should display all added slots as a unicode string, indicating the active slot', function() {
             let initiative = new Initiative();
             initiative.addSlot('PC', 1, 1);
-            initiative.addSlot('PC', 1, 1);
-            assert.equal(initiative.unicodeOrder, '{\u1F464}\u1F464');
+            initiative.addSlot('NPC', 1, 1);
+            assert.equal(initiative.unicodeOrder, '{:low_brightness:}:anger:');
         });
     });
 
@@ -45,7 +45,7 @@ describe('Initiative Tracker', function() {
             initiative.addSlot('PC', 1, 2);
             initiative.addSlot('PC', 1, 1);
             initiative.nextSlot();
-            assert.equal(initiative.unicodeOrder, '\u1F464{\u1F464}');
+            assert.equal(initiative.unicodeOrder, ':low_brightness:{:low_brightness:}');
         });
 
         it('should return the currently active slot to the first when next is called at the end of the round', function() {
@@ -54,7 +54,16 @@ describe('Initiative Tracker', function() {
             initiative.addSlot('PC', 1, 1);
             initiative.nextSlot();
             initiative.nextSlot();
-            assert.equal(initiative.unicodeOrder, '{\u1F464}\u1F464');
+            assert.equal(initiative.unicodeOrder, '{:low_brightness:}:low_brightness:');
+        });
+
+        it('should increment the round when next is called at the end of the round', function() {
+            let initiative = new Initiative();
+            initiative.addSlot('PC', 1, 2);
+            initiative.addSlot('PC', 1, 1);
+            initiative.nextSlot();
+            initiative.nextSlot();
+            assert.equal(initiative.currentRound, 2);
         });
     });
 });
