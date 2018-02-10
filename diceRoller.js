@@ -3,6 +3,11 @@ class DiceRoller {
     constructor(dice, symbolHash) {
         this.dice = dice;
         this.symbolList = [];
+        if (!symbolHash) {
+            var newConfig = JSON.parse(JSON.stringify(require('./dice.js')));
+            symbolHash = newConfig.symbols;
+        }
+        
         Object.keys(symbolHash).forEach(key => {
             this.symbolList.push(symbolHash[key]);
         });
