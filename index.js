@@ -92,7 +92,8 @@ var clearMatch = /^!Destiny Reset/i;
 var showMatch = /^!Destiny Show/i;
 var destinyHelpMatch = /^!Destiny Help/i;
 
-var initiativeRollMatch = /^!Init (PC|NPC) Roll [ ]?\[([adpcfbs]*)\]/i;
+var initiativeHelpMatch = /^!Init Help/i;
+var initiativeRollMatch = /^!Init (PC|NPC)[ ]?\[([adpcfbs]*)\]/i;
 var initiativeShowMatch = /^!Init Show/i;
 var initiativeNextMatch = /^!Init Next/i;
 var initiativeClearMatch = /^!Init Clear/i;
@@ -332,21 +333,21 @@ bot.on("message", function(user, userID, channelID, message, event) {
         });
         resultsMessage = printSymbols(roller.cancelledSymbols, emojiServerID);
 
-        sendMessages(channelID, [returnMessage + '\n\n' + resultsMessage, 'Adding PC slot to initative. New order: ' + '\n\n' + channelInit[channelID].unicodeOrder]);
+        sendMessages(channelID, [returnMessage + '\n\n' + resultsMessage, 'Adding '+ initRollMatch[1] +' slot to initative. New order: ' + '\n\n' + channelInit[channelID].unicodeOrder]);
 
     }
 
     if (message.match(initiativeShowMatch)) {
         if (!channelInit[channelID]){
-            sendMessages(channelID, ['No initiative is currently being tracked for this channel. Use `!Init (PC|NPC) Roll[]` to get started']);
+            sendMessages(channelID, ['No initiative is currently being tracked for this channel. Use `!Init (PC|NPC) []` to get started']);
         } else {
-            sendMessages(channelID, ['Round: ' + channelInit[channelID].currentRound + channelInit[channelID].unicodeOrder]);
+            sendMessages(channelID, ['Round: ' + channelInit[channelID].currentRound + ' | ' + channelInit[channelID].unicodeOrder]);
         }
     }
 
     if (message.match(initiativeNextMatch)) {
         if (!channelInit[channelID]){
-            sendMessages(channelID, ['No initiative is currently being tracked for this channel. Use `!Init (PC|NPC) Roll[]` to get started']);
+            sendMessages(channelID, ['No initiative is currently being tracked for this channel. Use `!Init (PC|NPC) []` to get started']);
         } else {
             channelInit[channelID].nextSlot();
             sendMessages(channelID, ['Round: ' + channelInit[channelID].currentRound + ' | ' + channelInit[channelID].unicodeOrder]);
@@ -355,11 +356,22 @@ bot.on("message", function(user, userID, channelID, message, event) {
 
     if (message.match(initiativeClearMatch)) {
         if (!channelInit[channelID]){
-            sendMessages(channelID, ['No initiative is currently being tracked for this channel. Use `!Init (PC|NPC) Roll[]` to get started']);
+            sendMessages(channelID, ['No initiative is currently being tracked for this channel. Use `!Init (PC|NPC) []` to get started']);
         } else {
             channelInit[channelID] = null;
             sendMessages(channelID, ['Initiative for this channel has been cleared']);
         }
+    }
+
+    if (message.match(initiativeHelpMatch)) {
+        var message = "```Init Help:\n";
+        message += "To add a slot: !Init (PC|NPC) [Some Dice Characters]\n";
+        message += "See '!Roll Help' for more details on the dice characters\n";
+        message += "Example: !Init PC [aa]\n";
+        message += "Init Next\n";
+        message += "Init Show\n";
+        message += "Init Clear```";
+        sendMessages(channelID, [message]);
     }
 });
 
