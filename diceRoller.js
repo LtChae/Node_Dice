@@ -1,4 +1,5 @@
 class DiceRoller {
+    
     constructor(dice) {
         this.dice = dice;
         this.rollResult = [];
@@ -19,12 +20,58 @@ class DiceRoller {
         this.rollResult = results;
     }
 
-    get result() {
-        var diceResults = [];
-        this.rollResult.forEach(function(result) {
-            diceResults = diceResults.concat(result.results)
+    static get symbolTypes() {
+        return ['Success', 'Failure', 'Threat', 'Advantage', 'Despair', 'Triumph', 'Light', 'Dark', 'Blank'];
+    }
+
+    static cancelSymbols(symbols) {
+        symbols.sort();
+        var cancelledSymbols = [];
+        var symbolCounts = this.countSymbols(symbols);
+
+        this.removeSymbols(symbols, 'Success', Math.min(symbolCounts['Failure'], symbolCounts['Success']));
+        this.removeSymbols(symbols, 'Failure', Math.min(symbolCounts['Failure'], symbolCounts['Success']));
+
+        this.removeSymbols(symbols, 'Advantage', Math.min(symbolCounts['Advantage'], symbolCounts['Threat']));
+        this.removeSymbols(symbols, 'Threat', Math.min(symbolCounts['Advantage'], symbolCounts['Threat']));
+
+        this.removeSymbols(symbols, 'Blank', symbolCounts['Blank']);
+
+        return symbols;
+    }
+
+    static removeSymbols(symbols, symbolToRemove, number) {
+        var index = symbols.indexOf(symbolToRemove);
+        if (index > -1) {
+            symbols.splice(index, number);
+        }
+        return symbols;
+    }
+
+    static countSymbols(symbols) {
+        var symbolTypes = this.symbolTypes;
+        var counts = {};
+        symbolTypes.forEach(function(type){
+            counts[type] = symbols.filter(symbol => symbol == type).length;
         });
-        return diceResults;
+
+        return counts;
+    }
+
+    get symbolResults() {
+        var symbolResults = [];
+        this.rollResult.forEach(function(result) {
+            symbolResults = symbolResults.concat(result.results)
+        });
+        return symbolResults;
+    }
+
+    get diceResults() {
+        return this.rollResult;
+    }
+
+    get cancelledSymbols() {
+        return DiceRoller.cancelSymbols(this.symbolResults);
     }
 }
 

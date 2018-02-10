@@ -35,7 +35,7 @@ class DestinyPool {
                     reject(err);
                 }
                 console.log(res);
-                if (res.rows[0]){
+                if (res && res.rows[0]){
                     pool = JSON.parse(res.rows[0].config);
                 } else {
                     pool = [];

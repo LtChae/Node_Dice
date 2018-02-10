@@ -252,7 +252,8 @@ module.exports = {
         },
         {  
             results:[  
-                'Triumph'
+                'Triumph',
+                'Success'
             ],
             code:'',
             face:'ProfTri'
@@ -391,7 +392,8 @@ module.exports = {
         },
         {  
             results:[  
-                'Despair'
+                'Despair',
+                'Failure'
             ],
             code:'',
             face:'ChalDes'

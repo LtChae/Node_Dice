@@ -3,6 +3,7 @@
 var http = require('http');
 var finalhandler = require('finalhandler');
 var serveStatic = require('serve-static');
+var DiceRoller = require('./diceRoller.js');
 const DestinyPool = require('./destinyPool.js');
 const HomeServer = process.env.home_server;
 
@@ -145,15 +146,14 @@ bot.on("message", function(user, userID, channelID, message, event) {
         let destinyPool = new DestinyPool(channelID, []);
 
         destinyPool.getPool().then(function(pool){
-            var die = "f";
-            var roll = Math.floor(Math.random() * serverDice[emojiServerID][die].length);
-            var rollResult = serverDice[emojiServerID][die][roll];
-            pool = pool.concat(rollResult.results);
+            let roller = new DiceRoller(serverDice[emojiServerID]);
+            roller.roll('f');
+            pool = pool.concat(roller.symbolResults);
 
             destinyPool.setPool(pool).then(function(result){
-                var returnMessage =  "Adding " + printSymbols(rollResult.results, emojiServerID) + " to destiny pool";
+                var returnMessage =  "Adding " + printSymbols(roller.symbolResults, emojiServerID) + " to destiny pool";
                 var poolMessage = "Current destiny pool: " + printSymbols(pool, emojiServerID);
-                sendMessages(channelID, [rollResult.code, returnMessage, poolMessage]);
+                sendMessages(channelID, [roller.diceResults[0].code, returnMessage, poolMessage]);
             });            
         });
     }
@@ -198,14 +198,14 @@ bot.on("message", function(user, userID, channelID, message, event) {
 
             var match = destinyMatch.exec(message);
 
-            if (match[1] === "Dark") {
+            if (match[1].toLowerCase() === "dark") {
                 if (pool.indexOf(dark) !== -1) {
                     returnMessage += "Flipping a Dark Side point.";
                     pool[pool.indexOf(dark)] = light;
                 } else {
                     returnMessage += "No Dark Side points to flip.";
                 }
-            } else if (match[1] === "Light") {
+            } else if (match[1].toLowerCase() === "light") {
                 if (pool.indexOf(light) !== -1) {
                     returnMessage += "Flipping a Light Side point.";
                     pool[pool.indexOf(light)] = dark;
@@ -287,69 +287,16 @@ bot.on("message", function(user, userID, channelID, message, event) {
     if (message.match(diceMatch)) {
         console.log("Saw Dice Message");
 
-        var match = diceMatch.exec(message);
-        var diceToRoll = match[1].split('');
+        let roller = new DiceRoller(serverDice[emojiServerID]);
+        roller.roll(diceMatch.exec(message)[1].toLowerCase());
 
-        var results = [];
-        diceToRoll.forEach(function(die) {
-            die = die.toLocaleLowerCase();
-            if (serverDice[emojiServerID][die]) {
-                var roll = Math.floor(Math.random() * serverDice[emojiServerID][die].length);
-                results = results.concat(serverDice[emojiServerID][die][roll]);
-            }
-        });
         var returnMessage = "";
 
-        var diceResults = [];
-        results.forEach(function(result) {
+        roller.diceResults.forEach(function(result) {
             returnMessage += result.code + " ";	
-            diceResults = diceResults.concat(result.results)
         });
-        var triumphs = diceResults.filter(resultIs(triumph)).length;
-        var despairs = diceResults.filter(resultIs(despair)).length
-        var successes = diceResults.filter(resultIs(success)).length + triumphs;
-        var failures = diceResults.filter(resultIs(failure)).length + despairs;
-        var threats = diceResults.filter(resultIs(threat)).length;
-        var advantages = diceResults.filter(resultIs(advantage)).length;
-        var lightForce = diceResults.filter(resultIs(light)).length;
-        var darkForce = diceResults.filter(resultIs(dark)).length;
 
-        var successScale = successes - failures;
-        var advantageScale = advantages - threats;
-
-        var resultsMessage = "";
-        if (successScale > 0) {
-            for(var i=0; i < successScale; i++){
-                resultsMessage += serverSymbols[emojiServerID].success.code;
-            }	
-        } else if (successScale < 0) {
-            for(var i=0; i < -successScale; i++){
-                resultsMessage += serverSymbols[emojiServerID].failure.code;
-            }
-        }
-
-        if (advantageScale > 0) {
-            for(var i=0; i < advantageScale; i++){
-                resultsMessage += serverSymbols[emojiServerID].advantage.code;
-            }	
-        } else if (advantageScale < 0) {
-            for(var i=0; i < -advantageScale; i++){
-                resultsMessage += serverSymbols[emojiServerID].threat.code;
-            }
-        }
-
-        for(var i=0; i < despairs; i++){
-            resultsMessage += serverSymbols[emojiServerID].despair.code;
-        }
-        for(var i=0; i < triumphs; i++){
-            resultsMessage += serverSymbols[emojiServerID].triumph.code;
-        }
-        for(var i=0; i < lightForce; i++){
-            resultsMessage += serverSymbols[emojiServerID].light.code;
-        }
-        for(var i=0; i < darkForce; i++){
-            resultsMessage += serverSymbols[emojiServerID].dark.code;
-        }
+        resultsMessage = printSymbols(roller.cancelledSymbols, emojiServerID)
 
         if (resultsMessage == ""){
             resultsMessage = "`All symbols cancelled out or none were rolled.`"
