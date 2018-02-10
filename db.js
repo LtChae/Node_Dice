@@ -16,7 +16,7 @@ var config = {
     host: match[3], // Server hosting the postgres database
     port: match[4], //env var: PGPORT
     max: 10, // max number of clients in the pool
-    ssl: false
+    ssl: true
     //idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
 };
 console.log(config);
