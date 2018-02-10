@@ -12,20 +12,26 @@ describe('DiceRoller', function() {
         "c":newConfig.challenge,
         "f":newConfig.force
     }
+    var symbolHash = newConfig.symbols;
     
     describe('GenerateResult', function() {
         it('should return no more than two results when rolling a single ability die', function() {
-            let roller = new DiceRoller(diceEM);
+            let roller = new DiceRoller(diceEM, symbolHash);
             roller.roll('a');
-            console.log(roller.result);
             assert.equal(roller.symbolResults.length <= 2,true)
         });
         
         it('should return precisely one dice result when rolling a single ability die', function() {
-            let roller = new DiceRoller(diceEM);
+            let roller = new DiceRoller(diceEM, symbolHash);
             roller.roll('a');
-            console.log(roller.result);
             assert.equal(roller.diceResults.length == 1,true)
+        });
+
+        it('should return a symbol result that includes the additional threat symbol specified', function() {
+            let roller = new DiceRoller(diceEM, symbolHash);
+            roller.roll('a', 't');
+            console.log(roller.symbolResults);
+            assert.equal(roller.symbolResults.includes('Threat'),true)
         });
     });
 

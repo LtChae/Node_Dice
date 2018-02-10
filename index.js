@@ -82,7 +82,7 @@ function setupServer(serverID) {
     serverSetup[serverID] = true;
 }
 
-var diceMatch = /!Roll[ ]?\[([adpcfbs]*)\]/i;
+var diceMatch = /!Roll[ ]?\[([adpcfbs]*)\][ ]?\[?([sfatrdkl]*)\]?/i;
 var diceHelpMatch = /^!Roll Help/i;
 var destinyMatch = /^!Destiny Flip ((Dark)|(Light))/i;
 var destinyAddMatch = /^!Destiny Add ((Dark)|(Light))/i;
@@ -93,7 +93,7 @@ var showMatch = /^!Destiny Show/i;
 var destinyHelpMatch = /^!Destiny Help/i;
 
 var initiativeHelpMatch = /^!Init Help/i;
-var initiativeRollMatch = /^!Init (PC|NPC)[ ]?\[([adpcfbs]*)\]/i;
+var initiativeRollMatch = /^!Init (PC|NPC)[ ]?\[([adpcfbs]*)\][ ]?\[?([sfatrdkl]*)\]?/i;
 var initiativeShowMatch = /^!Init Show/i;
 var initiativeNextMatch = /^!Init Next/i;
 var initiativeClearMatch = /^!Init Clear/i;
@@ -287,15 +287,27 @@ bot.on("message", function(user, userID, channelID, message, event) {
         message += "p = Proficiency (Yellow)\n";
         message += "c = Challenge (Red)\n";
         message += "f = Force (White)\n";
-        message += "Example: !Roll[aadd]```";
+        message += "Example: !Roll[aadd]\n";
+        message += "--------------------\n";
+        message += "The dice bot also allows additional symbols to be added to rolls in the form of: !Roll[Some Dice Characters][Some Additional Characters]\n";
+        message += "Where 'Some Additional Characters' are any of these:\n";
+        message += "s = Success\n";
+        message += "f = Failure\n";
+        message += "a = Advantage\n";
+        message += "t = Threat\n";
+        message += "r = Triumph\n";
+        message += "d = Despair\n";
+        message += "k = Dark\n";
+        message += "l = Light\n";
+        message += "Example: !Roll[aadd][sa]\n```";
         sendMessages(channelID, [message]);
     }
 
     if (message.match(diceMatch)) {
         console.log("Saw Dice Message");
 
-        let roller = new DiceRoller(serverDice[emojiServerID]);
-        roller.roll(diceMatch.exec(message)[1].toLowerCase());
+        let roller = new DiceRoller(serverDice[emojiServerID], serverSymbols[serverID]);
+        roller.roll(diceMatch.exec(message)[1].toLowerCase(), diceMatch.exec(message)[2].toLowerCase());
 
         var returnMessage = "";
 
@@ -321,9 +333,9 @@ bot.on("message", function(user, userID, channelID, message, event) {
             channelInit[channelID] = new Initiative();
         }
 
-        let roller = new DiceRoller(serverDice[emojiServerID]);
+        let roller = new DiceRoller(serverDice[emojiServerID], serverSymbols[serverID]);
         var initRollMatch = initiativeRollMatch.exec(message);
-        roller.roll(initRollMatch[2].toLowerCase());
+        roller.roll(initRollMatch[2].toLowerCase(), initRollMatch[3].toLowerCase());
         var symbols = DiceRoller.countSymbols(roller.cancelledSymbols);
         channelInit[channelID].addSlot(initRollMatch[1], symbols['Success'], symbols['Advantage']);
 
@@ -368,6 +380,8 @@ bot.on("message", function(user, userID, channelID, message, event) {
         message += "To add a slot: !Init (PC|NPC) [Some Dice Characters]\n";
         message += "See '!Roll Help' for more details on the dice characters\n";
         message += "Example: !Init PC [aa]\n";
+        message += "Init supports rolling Additional Symbols as well.\n";
+        message += "Example: !Init PC [aa][sa]\n";
         message += "Init Next\n";
         message += "Init Show\n";
         message += "Init Clear```";

@@ -1,13 +1,13 @@
 module.exports = {
     symbols: {  
-        success:{name:'Success', code:''},
-        failure:{name:'Failure', code:''},
-        advantage:{name:'Advantage', code:''},
-        threat:{name:'Threat', code:''},
-        triumph:{name:'Triumph', code:''},
-        despair:{name:'Despair', code:''},
-        dark:{name:'Dark', code:''},
-        light:{name:'Light', code:''}
+        success:{name:'Success', code:'', character:'s'},
+        failure:{name:'Failure', code:'', character:'f'},
+        advantage:{name:'Advantage', code:'', character:'a'},
+        threat:{name:'Threat', code:'', character:'t'},
+        triumph:{name:'Triumph', code:'', character:'r'},
+        despair:{name:'Despair', code:'', character:'d'},
+        dark:{name:'Dark', code:'', character:'k'},
+        light:{name:'Light', code:'', character:'l'}
     },
 
     ability: [  

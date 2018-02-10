@@ -1,11 +1,15 @@
 class DiceRoller {
     
-    constructor(dice) {
+    constructor(dice, symbolHash) {
         this.dice = dice;
+        this.symbolList = [];
+        Object.keys(symbolHash).forEach(key => {
+            this.symbolList.push(symbolHash[key]);
+        });
         this.rollResult = [];
     }
 
-    roll(poolString) {
+    roll(poolString, symbolString) {
         var diceToRoll = poolString.split('');
         var dice = this.dice;
         var results = [];
@@ -16,7 +20,9 @@ class DiceRoller {
                 results = results.concat(dice[die][roll]);
             }
         });
-        console.log(results);
+
+        this.additionalSymbols = symbolString;
+        
         this.rollResult = results;
     }
 
@@ -63,6 +69,15 @@ class DiceRoller {
         this.rollResult.forEach(function(result) {
             symbolResults = symbolResults.concat(result.results)
         });
+        if (this.additionalSymbols){
+            var additionalSymbols = this.additionalSymbols.split('');
+            additionalSymbols.forEach(addSymbol => {
+                var newSymbol = this.symbolList.find(symbol => {
+                    return symbol.character == addSymbol;
+                });
+                symbolResults.push(newSymbol.name);
+            });
+        }
         return symbolResults;
     }
 
