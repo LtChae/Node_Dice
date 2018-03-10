@@ -64,7 +64,6 @@ describe('Vehicle', function() {
                     });
                 }
             });
-            console.log(vehicles.length);
         });
     });
 });

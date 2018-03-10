@@ -37,12 +37,10 @@ class Vehicle {
         });
         for (var key in parts){
             var donorVehicle = filteredVehicles[Math.floor(Math.random()*filteredVehicles.length)];
-            console.log(donorVehicle.attributes.name);
             for (var attribute in parts[key]){
                 newVehicle.attributes[parts[key][attribute]] = donorVehicle.attributes[parts[key][attribute]];
             }
         }
-        console.log(newVehicle.attributes);
     }  
 }
 

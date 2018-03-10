@@ -48,6 +48,30 @@ class Initiative {
         this.sort();
     }
 
+    deleteSlot(type, occurrence){
+        var pos;
+        var occurences = 0;
+        this.initiative.forEach(function(slot, index) {
+            if (slot.type == type) {
+                occurences++;
+                if (occurences == occurrence){
+                    pos = index;
+                }
+            }
+        });
+        if (pos) {
+            if (pos < this.currentSlotIndex) {
+                this.currentSlotIndex--;
+            }
+            this.initiative.splice(pos, 1);
+            this.sort();
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
+
     sort(){
         this.initiative.sort(function(slot1, slot2){
             var tempValue1 = slot1.successes + slot1.advantages / 10;
