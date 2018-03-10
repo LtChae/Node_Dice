@@ -23,7 +23,7 @@ describe('Initiative Tracker', function() {
     describe('Get Unicode Order', function() {
         it('should display all added slots as a unicode string, indicating the active slot', function() {
             let initiative = new Initiative();
-            initiative.addSlot('PC', 1, 1);
+            initiative.addSlot('PC', 1, 2);
             initiative.addSlot('NPC', 1, 1);
             assert.equal(initiative.unicodeOrder, '{:low_brightness:}:anger:');
         });
@@ -36,6 +36,15 @@ describe('Initiative Tracker', function() {
             initiative.addSlot('NPC', 2, 1);
             initiative.sort();
             assert.deepEqual(initiative.order, [{type: 'NPC', successes:2, advantages: 1}, {type: 'PC', successes:1, advantages: 1}]);
+        });
+
+        it('should sort all slots by success and advantage, favoring PCs on ties', function() {
+            let initiative = new Initiative();
+            initiative.addSlot('NPC', 1, 1);
+            initiative.addSlot('PC', 1, 1);
+            initiative.addSlot('NPC', 2, 1);
+            initiative.sort();
+            assert.deepEqual(initiative.order, [{type: 'NPC', successes:2, advantages: 1},{type: 'PC', successes:1, advantages: 1}, {type: 'NPC', successes:1, advantages: 1}]);
         });
     });
 

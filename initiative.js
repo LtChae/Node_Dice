@@ -77,8 +77,15 @@ class Initiative {
         this.initiative.sort(function(slot1, slot2){
             var tempValue1 = slot1.successes + slot1.advantages / 10;
             var tempValue2 = slot2.successes + slot2.advantages / 10;
-            
-            return tempValue2 - tempValue1;
+            var result = tempValue2 - tempValue1;
+            if (result == 0) {
+                if (slot1.type === "PC") {
+                    return -1;
+                } else if (slot2.type === "PC") {
+                    return 1;
+                }
+            }
+            return result;
         });
     }
 
