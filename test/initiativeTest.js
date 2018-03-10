@@ -88,6 +88,15 @@ describe('Initiative Tracker', function() {
             assert.deepEqual(initiative.order, [{type: 'PC', successes:4, advantages: 2}, {type: 'PC', successes:3, advantages: 1}, {type: 'NPC', successes:2, advantages: 3}]);
         });
 
+        it('should delete the 1st PC slot', function() {
+            let initiative = new Initiative();
+            initiative.addSlot('PC', 4, 2);
+            initiative.addSlot('PC', 3, 1);
+            initiative.addSlot('NPC', 2, 3);
+            assert.equal(initiative.deleteSlot('PC', 1), true);
+            assert.deepEqual(initiative.order, [ {type: 'PC', successes:3, advantages: 1}, {type: 'NPC', successes:2, advantages: 3}]);
+        });
+
         it('should delete the 3rd PC slot even when not contiguous', function() {
             let initiative = new Initiative();
             initiative.addSlot('PC', 4, 2);

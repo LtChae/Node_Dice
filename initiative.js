@@ -49,17 +49,18 @@ class Initiative {
     }
 
     deleteSlot(type, occurrence){
-        var pos;
+        var pos = -1;
         var occurences = 0;
         this.initiative.forEach(function(slot, index) {
             if (slot.type == type) {
                 occurences++;
                 if (occurences == occurrence){
+                    console.log("Index of " + type, index);
                     pos = index;
                 }
             }
         });
-        if (pos) {
+        if (pos >= 0) {
             if (pos < this.currentSlotIndex) {
                 this.currentSlotIndex--;
             }
