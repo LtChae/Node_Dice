@@ -1,5 +1,6 @@
 var assert = require('assert');
 var DiceRoller = require('../diceRoller');
+var histogram = require('ascii-histogram');
 describe('DiceRoller', function() {
     
     var newConfig = JSON.parse(JSON.stringify(require('../dice.js')));
@@ -13,6 +14,10 @@ describe('DiceRoller', function() {
         "f":newConfig.force
     }
     var symbolHash = newConfig.symbols;
+
+    function isWithinToleranceOf(thing, tolerance, target) {
+        return (thing > target - (target * tolerance) && thing < target + (target * tolerance))
+    }
     
     describe('GenerateResult', function() {
         it('should return no more than two results when rolling a single ability die', function() {
@@ -115,6 +120,49 @@ describe('DiceRoller', function() {
         it('should remove three symbols from a list of symbols', function() {
             var symbols = DiceRoller.removeSymbols(['Threat', 'Threat', 'Threat', 'Advantage', 'Advantage', 'Advantage', 'Advantage'], 'Threat', 3);
             assert.deepEqual(symbols, ['Advantage', 'Advantage', 'Advantage', 'Advantage']);
+        });
+    });
+
+    describe('The Ability Die', function() {
+        it('should roll symbols within expected ratios', function() {
+            let roller = new DiceRoller(diceEM, symbolHash);
+            var results = {};
+            for (i = 0; i < 10000; i++) { 
+                roller.roll('a');
+                var result = roller.diceResults[0];
+                if (!results[result.face]) {
+                    results[result.face] = 0;
+                }
+                results[result.face] += 1;
+            }
+            assert.equal(isWithinToleranceOf(results['Abil1S'], 0.05, 10000/4), true);
+            assert.equal(isWithinToleranceOf(results['Abil1A'], 0.05, 10000/4), true);
+            assert.equal(isWithinToleranceOf(results['Abil1A1S'], 0.05, 10000/8), true);
+            assert.equal(isWithinToleranceOf(results['Abil2S'], 0.05, 10000/8), true);
+            assert.equal(isWithinToleranceOf(results['Abil2A'], 0.05, 10000/8), true);
+            assert.equal(isWithinToleranceOf(results['AbilBla'], 0.05, 10000/8), true);
+        });
+    });
+
+    describe('The Results of a roll', function() {
+        it('should produce results at the expected ratios', function() {
+            let roller = new DiceRoller(diceEM, symbolHash);
+            var results = {};
+            for (i = 0; i < 1000; i++) { 
+                roller.roll('ppadd');
+                // var result = roller.cancelledSymbols.join(',');
+                var result = roller.cancelledSymbols.reduce(function(occ, item) {
+                    occ[item] = (occ[item] || 0) + 1;
+                    return occ;
+                }, {});
+                result = JSON.stringify(result)
+                if (!results[result]) {
+                    results[result] = 0;
+                }
+                results[result] += 1;
+            }
+            console.log(histogram(results, { bar: '=', width: 5, sort: true }));
+            assert.equal(true, true);
         });
     });
 });

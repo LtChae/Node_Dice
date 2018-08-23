@@ -96,8 +96,9 @@ var initiativeHelpMatch = /^!Init Help/i;
 var initiativeRollMatch = /^!Init (PC|NPC)[ ]?\[([adpcfbs]*)\][ ]?\[?([sfatrdkl]*)\]?/i;
 var initiativeAddMatch = /^!Init (?:Add|A) (PC|NPC) (\d+):\s?(\d+)?/i;
 var initiativeRemoveMatch = /^!Init (?:Remove|R|Delete|D) (PC|NPC) (\d+)/i;
-var initiativeShowMatch = /^!Init (?:Show|S|View|V)/i;
-var initiativeNextMatch = /^!Init (?:Next|N)/i;
+var initiativeShowMatch = /^!Init (?:Show|S|View|V)$/i;
+var initiativeNextMatch = /^!Init (?:Next|N)$/i;
+var initiativeStartMatch = /^!Init (?:Start)$/i;
 var initiativeClearMatch = /^!Init (?:Clear|C|Reset)/i;
 
 var pool = [];
@@ -306,8 +307,6 @@ bot.on("message", function(user, userID, channelID, message, event) {
     }
 
     if (message.match(diceMatch)) {
-        console.log("Saw Dice Message");
-
         let roller = new DiceRoller(serverDice[emojiServerID], serverSymbols[serverID]);
         roller.roll(diceMatch.exec(message)[1].toLowerCase(), diceMatch.exec(message)[2].toLowerCase());
 
@@ -388,6 +387,15 @@ bot.on("message", function(user, userID, channelID, message, event) {
             sendMessages(channelID, ['No initiative is currently being tracked for this channel. Use `!Init (PC|NPC) []` to get started']);
         } else {
             channelInit[channelID].nextSlot();
+            sendMessages(channelID, ['Round: ' + channelInit[channelID].currentRound + ' | ' + channelInit[channelID].unicodeOrder]);
+        }
+    }
+
+    if (message.match(initiativeStartMatch)) {
+        if (!channelInit[channelID]){
+            sendMessages(channelID, ['No initiative is currently being tracked for this channel. Use `!Init (PC|NPC) []` to get started']);
+        } else {
+            channelInit[channelID].beginInitiative();
             sendMessages(channelID, ['Round: ' + channelInit[channelID].currentRound + ' | ' + channelInit[channelID].unicodeOrder]);
         }
     }

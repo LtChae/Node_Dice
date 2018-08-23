@@ -1,8 +1,8 @@
 class Initiative {
     constructor(channelID) {
         this.initiative = [];
-        this.currentSlotIndex = 0;
-        this.round = 1;
+        this.currentSlotIndex = -1;
+        this.round = 0;
     }
 
     get npc() {
@@ -18,10 +18,17 @@ class Initiative {
     }
 
     get currentRound(){
+        console.log(`Getting round as: ${this.round}`);
         return this.round;
     }
 
+    set currentRound(round){
+        console.log(`Setting ${this.round} to ${round}`);
+        this.round = round;
+    }
+
     get unicodeOrder(){
+        console.log('   unicodeOrder');
         var newOrder = '';
         this.initiative.forEach(function(slot, index) {
             var slotSymbol;
@@ -44,11 +51,16 @@ class Initiative {
     }
 
     addSlot(type, successes, advantages){
+        console.log('   addSlot');
         this.initiative.push({type:type, successes:successes, advantages:advantages});
         this.sort();
+        if (this.currentRound <= 0) {
+            this.currentSlotIndex = -1;
+        }
     }
 
     deleteSlot(type, occurrence){
+        console.log('   deleteSlot');
         var pos = -1;
         var occurences = 0;
         this.initiative.forEach(function(slot, index) {
@@ -74,6 +86,7 @@ class Initiative {
     }
 
     sort(){
+        console.log('   sort');
         this.initiative.sort(function(slot1, slot2){
             var tempValue1 = slot1.successes + slot1.advantages / 10;
             var tempValue2 = slot2.successes + slot2.advantages / 10;
@@ -90,12 +103,22 @@ class Initiative {
     }
 
     nextSlot(){
+        console.log('   nextSlot');
+        if (this.currentRound <= 0) {
+            this.beginInitiative();
+        }
         if (this.currentSlotIndex + 1 >= this.initiative.length) {
             this.round += 1;
             this.currentSlotIndex = 0;
         } else {
             this.currentSlotIndex += 1;
         }
+    }
+
+    beginInitiative(){
+        console.log('   beginInitiative');
+        this.currentSlotIndex = 0;
+        this.round = 1;
     }
 }
 

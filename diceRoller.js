@@ -25,9 +25,7 @@ class DiceRoller {
                 results = results.concat(dice[die][roll]);
             }
         });
-
         this.additionalSymbols = symbolString;
-        
         this.rollResult = results;
     }
 

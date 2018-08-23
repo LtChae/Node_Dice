@@ -25,6 +25,7 @@ describe('Initiative Tracker', function() {
             let initiative = new Initiative();
             initiative.addSlot('PC', 1, 2);
             initiative.addSlot('NPC', 1, 1);
+            initiative.beginInitiative();
             assert.equal(initiative.unicodeOrder, '{:low_brightness:}:anger:');
         });
     });
