@@ -35,7 +35,6 @@ describe('DiceRoller', function() {
         it('should return a symbol result that includes the additional threat symbol specified', function() {
             let roller = new DiceRoller(diceEM, symbolHash);
             roller.roll('a', 't');
-            console.log(roller.symbolResults);
             assert.equal(roller.symbolResults.includes('Threat'),true)
         });
     });
@@ -161,7 +160,6 @@ describe('DiceRoller', function() {
                 }
                 results[result] += 1;
             }
-            console.log(histogram(results, { bar: '=', width: 5, sort: true }));
             assert.equal(true, true);
         });
     });
