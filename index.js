@@ -457,6 +457,9 @@ function print(emojiID) {
 function hasPermission(permission, serverID) {
     var roleID = bot.servers[serverID].members[bot.id].roles[0];
     var role = bot.servers[serverID].roles[roleID];
+    if (!role) {
+        return false;
+    }
     return ((role._permissions & permission) == permission);
 }
 
